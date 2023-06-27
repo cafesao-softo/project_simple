@@ -11,7 +11,7 @@
     "start": "Node_ENV=dev nest start",
     "start:dev": "Node_ENV=dev nest start --watch",
     "start:debug": "Node_ENV=dev nest start --debug --watch",
-    "start:prod": "Node_ENV=prod node main",
+    "start:prod": "Node_ENV=prod node src/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "dependencies": {
