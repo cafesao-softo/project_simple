@@ -13,7 +13,7 @@ export class DistrictModel {
   @PrimaryGeneratedColumn({
     type: "integer"
   })
-  id: number
+  id?: number
 
   @Column()
   name: string

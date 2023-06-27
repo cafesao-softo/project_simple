@@ -2,27 +2,17 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToOne,
-  JoinColumn
+  OneToMany,
+  JoinTable
 } from "typeorm"
 import { StateModel } from "./State"
+import { DistrictModel } from "./District"
 
 @Entity()
 export class CityModel {
-  @PrimaryGeneratedColumn({
-    type: "integer"
-  })
-  id: number
+  @PrimaryGeneratedColumn()
+  id?: number
 
   @Column()
   name: string
-
-  @OneToOne(() => StateModel, {
-    cascade: true,
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-    orphanedRowAction: "delete"
-  })
-  @JoinColumn()
-  state: StateModel
 }
