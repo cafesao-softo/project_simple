@@ -1,13 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  OneToMany,
-  JoinTable
-} from "typeorm"
-import { StateModel } from "./State"
-import { DistrictModel } from "./District"
-
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
 @Entity()
 export class CityModel {
   @PrimaryGeneratedColumn()

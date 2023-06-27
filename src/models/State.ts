@@ -1,18 +1,12 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  OneToMany,
-  OneToOne,
-  JoinColumn
-} from "typeorm"
-import { CityModel } from "./City"
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity()
 export class StateModel {
   @PrimaryGeneratedColumn()
   id?: number
 
-  @Column()
+  @Column({
+    unique: true
+  })
   name: string
 }
