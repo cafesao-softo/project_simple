@@ -1,0 +1,261 @@
+_type: export
+__export_format: 4
+__export_date: 2023-06-27T19:49:20.694Z
+__export_source: insomnia.desktop.app:v2023.2.2
+resources:
+  - _id: req_f0b47850138b4b9cb1d3809e90717c40
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687893657863
+    created: 1687893477450
+    url: "{{ _.URL }}"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"state": "SC",
+        	"city": "Navegantes",
+        	"district": "Gravatá"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1687893490923
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    parentId: null
+    modified: 1687892900329
+    created: 1687892900329
+    name: Project Simple
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_8b596590909044f887874f573a954730
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687893708390
+    created: 1687893492509
+    url: "{{ _.URL }}/state/sc"
+    name: Read - State
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1687893490328.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_426a5eecdb2b445cb57e1a4200a01557
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687893713830
+    created: 1687893502975
+    url: "{{ _.URL }}/city/navegantes"
+    name: Read - City
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1687893490253.9062
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0eff59b3f5d3402cb8bbf99e549af3da
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687893716194
+    created: 1687893507867
+    url: "{{ _.URL }}/district/gravata"
+    name: Read - District
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1687893490179.5625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b8620f99c7ed48a395d9de65393122b9
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687895255477
+    created: 1687893483981
+    url: "{{ _.URL }}/state/sc/rj"
+    name: Update - State
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1687893490130
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_fd7b2833dc8b4f9a9bcd4a8b5d04f71c
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687895263348
+    created: 1687895216019
+    url: "{{ _.URL }}/city/navegantes/itajai"
+    name: Update - City
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1687439985897.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9455d582494d4acba57c8784975854b9
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687895273254
+    created: 1687895224297
+    url: "{{ _.URL }}/district/gravata/são paulo"
+    name: Update - District
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1687213233781.0625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d2b2cb5c84354a8a8caee211b36c7ad7
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687893710065
+    created: 1687893581271
+    url: "{{ _.URL }}/state/sc"
+    name: Delete - State
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1686986481664.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_af3ba89b436842ecbeab947622b7c3a4
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687893693887
+    created: 1687893586922
+    url: "{{ _.URL }}/city/navegantes"
+    name: Delete - City
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1686986481614.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f6311ceb831e4c3e863f23eaa6f2957c
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687895328495
+    created: 1687893489337
+    url: "{{ _.URL }}/district/são paulo"
+    name: Delete - District
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1686986481564.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_1677a9fabaa881ad0a6c6b40b9e97710485d51b8
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687892914366
+    created: 1687892900331
+    name: Base Environment
+    data:
+      URL: http://localhost:3001/api
+    dataPropertyOrder:
+      "&":
+        - URL
+    color: null
+    isPrivate: false
+    metaSortKey: 1687892900331
+    _type: environment
+  - _id: jar_1677a9fabaa881ad0a6c6b40b9e97710485d51b8
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687892900332
+    created: 1687892900332
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_5aee5ce0c4cc4213bd5fcaff371104b3
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1687892900329
+    created: 1687892900329
+    fileName: Project Simple
+    contents: ""
+    contentType: yaml
+    _type: api_spec
