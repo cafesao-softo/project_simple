@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2023-06-27T19:49:20.694Z
-__export_source: insomnia.desktop.app:v2023.2.2
+__export_date: 2023-06-27T22:09:17.552Z
+__export_source: insomnia.desktop.app:v2023.3.0
 resources:
   - _id: req_f0b47850138b4b9cb1d3809e90717c40
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687893657863
+    modified: 1687901875215
     created: 1687893477450
     url: "{{ _.URL }}"
     name: Create
@@ -15,9 +15,15 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"state": "SC",
-        	"city": "Navegantes",
-        	"district": "Gravatá"
+        	"state": {
+        		"name": "SC"
+        	},
+        	"city": {
+        		"name": "Navegantes"
+        	},
+        	"district": {
+        		"name": "Gravatá"
+        	}
         }
     parameters: []
     headers:
@@ -43,7 +49,7 @@ resources:
     _type: workspace
   - _id: req_8b596590909044f887874f573a954730
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687893708390
+    modified: 1687895653274
     created: 1687893492509
     url: "{{ _.URL }}/state/sc"
     name: Read - State
@@ -64,9 +70,9 @@ resources:
     _type: request
   - _id: req_426a5eecdb2b445cb57e1a4200a01557
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687893713830
+    modified: 1687895659564
     created: 1687893502975
-    url: "{{ _.URL }}/city/navegantes"
+    url: "{{ _.URL }}/city/NAVEGANTES"
     name: Read - City
     description: ""
     method: GET
