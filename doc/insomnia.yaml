@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2023-06-27T22:09:17.552Z
+__export_date: 2023-06-28T15:21:57.328Z
 __export_source: insomnia.desktop.app:v2023.3.0
 resources:
   - _id: req_f0b47850138b4b9cb1d3809e90717c40
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687901875215
+    modified: 1687965396708
     created: 1687893477450
     url: "{{ _.URL }}"
     name: Create
@@ -19,10 +19,10 @@ resources:
         		"name": "SC"
         	},
         	"city": {
-        		"name": "Navegantes"
+        		"name": "Penha"
         	},
         	"district": {
-        		"name": "Gravatá"
+        		"name": "Centro"
         	}
         }
     parameters: []
@@ -49,9 +49,9 @@ resources:
     _type: workspace
   - _id: req_8b596590909044f887874f573a954730
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687895653274
+    modified: 1687964771963
     created: 1687893492509
-    url: "{{ _.URL }}/state/sc"
+    url: "{{ _.URL }}/states/sc"
     name: Read - State
     description: ""
     method: GET
@@ -70,9 +70,9 @@ resources:
     _type: request
   - _id: req_426a5eecdb2b445cb57e1a4200a01557
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687895659564
+    modified: 1687957315334
     created: 1687893502975
-    url: "{{ _.URL }}/city/NAVEGANTES"
+    url: "{{ _.URL }}/cities/NAVEGANTES"
     name: Read - City
     description: ""
     method: GET
@@ -91,9 +91,9 @@ resources:
     _type: request
   - _id: req_0eff59b3f5d3402cb8bbf99e549af3da
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687893716194
+    modified: 1687957318077
     created: 1687893507867
-    url: "{{ _.URL }}/district/gravata"
+    url: "{{ _.URL }}/districts/gravata"
     name: Read - District
     description: ""
     method: GET
@@ -112,9 +112,9 @@ resources:
     _type: request
   - _id: req_b8620f99c7ed48a395d9de65393122b9
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687895255477
+    modified: 1687957330923
     created: 1687893483981
-    url: "{{ _.URL }}/state/sc/rj"
+    url: "{{ _.URL }}/states/sc"
     name: Update - State
     description: ""
     method: PUT
@@ -133,9 +133,9 @@ resources:
     _type: request
   - _id: req_fd7b2833dc8b4f9a9bcd4a8b5d04f71c
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687895263348
+    modified: 1687957328069
     created: 1687895216019
-    url: "{{ _.URL }}/city/navegantes/itajai"
+    url: "{{ _.URL }}/cities/navegantes"
     name: Update - City
     description: ""
     method: PUT
@@ -154,9 +154,9 @@ resources:
     _type: request
   - _id: req_9455d582494d4acba57c8784975854b9
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687895273254
+    modified: 1687957323302
     created: 1687895224297
-    url: "{{ _.URL }}/district/gravata/são paulo"
+    url: "{{ _.URL }}/districts/gravata"
     name: Update - District
     description: ""
     method: PUT
@@ -175,9 +175,9 @@ resources:
     _type: request
   - _id: req_d2b2cb5c84354a8a8caee211b36c7ad7
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687893710065
+    modified: 1687957333942
     created: 1687893581271
-    url: "{{ _.URL }}/state/sc"
+    url: "{{ _.URL }}/states/sc"
     name: Delete - State
     description: ""
     method: DELETE
@@ -196,9 +196,9 @@ resources:
     _type: request
   - _id: req_af3ba89b436842ecbeab947622b7c3a4
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687893693887
+    modified: 1687957337246
     created: 1687893586922
-    url: "{{ _.URL }}/city/navegantes"
+    url: "{{ _.URL }}/cities/navegantes"
     name: Delete - City
     description: ""
     method: DELETE
@@ -217,9 +217,9 @@ resources:
     _type: request
   - _id: req_f6311ceb831e4c3e863f23eaa6f2957c
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687895328495
+    modified: 1687957340077
     created: 1687893489337
-    url: "{{ _.URL }}/district/são paulo"
+    url: "{{ _.URL }}/districts/são paulo"
     name: Delete - District
     description: ""
     method: DELETE
