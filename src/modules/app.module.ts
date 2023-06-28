@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common"
-import { HeathcheckController } from "../controllers/heathcheck.controller"
+import { HealthcheckController } from "../controllers/healthcheck.controller"
 import { StateController } from "../controllers/state.controller"
 import { CityController } from "../controllers/city.controller"
 import { DistrictController } from "../controllers/district.controller"
@@ -29,7 +29,7 @@ import { CreateController } from "src/controllers/create.controller"
   ],
   controllers: [
     CreateController,
-    HeathcheckController,
+    HealthcheckController,
     StateController,
     CityController,
     DistrictController
