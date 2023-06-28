@@ -3,3 +3,8 @@ node_modules/
 .prettierrc.json
 .git
 .gitignore
+dist/
+doc/
+.env.asc
+.eslintrc.js
+.prettierrc
