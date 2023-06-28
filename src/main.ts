@@ -14,10 +14,9 @@ async function bootstrap() {
     .setTitle("Project Simple")
     .setDescription("Project Simple")
     .setVersion("1.0")
-    .addServer("/v1/api")
     .build()
   const document = SwaggerModule.createDocument(app, options)
-  SwaggerModule.setup("/doc", app, document)
+  SwaggerModule.setup("doc", app, document)
 
   await app.listen(process.env.PORT || 3000)
 }
