@@ -2,31 +2,20 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToOne,
-  JoinColumn
+  JoinColumn,
+  ManyToOne
 } from "typeorm"
-import { StateModel } from "./State"
 import { CityModel } from "./City"
 
 @Entity()
 export class DistrictModel {
-  @PrimaryGeneratedColumn({
-    type: "integer"
-  })
+  @PrimaryGeneratedColumn()
   id?: number
 
   @Column()
   name: string
 
-  @OneToOne(() => StateModel, {
-    cascade: true
-  })
+  @ManyToOne(() => CityModel, (CityModel) => CityModel.district)
   @JoinColumn()
-  state: StateModel
-
-  @OneToOne(() => CityModel, {
-    cascade: true
-  })
-  @JoinColumn()
-  city: CityModel
+  city?: CityModel
 }
