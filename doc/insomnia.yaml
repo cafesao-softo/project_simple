@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2023-06-28T15:21:57.328Z
+__export_date: 2023-06-28T20:37:24.005Z
 __export_source: insomnia.desktop.app:v2023.3.0
 resources:
   - _id: req_f0b47850138b4b9cb1d3809e90717c40
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687965396708
+    modified: 1687983871379
     created: 1687893477450
     url: "{{ _.URL }}"
     name: Create
@@ -19,7 +19,7 @@ resources:
         		"name": "SC"
         	},
         	"city": {
-        		"name": "Penha"
+        		"name": "São Francisco"
         	},
         	"district": {
         		"name": "Centro"
@@ -49,7 +49,7 @@ resources:
     _type: workspace
   - _id: req_8b596590909044f887874f573a954730
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687964771963
+    modified: 1687982753658
     created: 1687893492509
     url: "{{ _.URL }}/states/sc"
     name: Read - State
@@ -70,9 +70,9 @@ resources:
     _type: request
   - _id: req_426a5eecdb2b445cb57e1a4200a01557
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687957315334
+    modified: 1687983850822
     created: 1687893502975
-    url: "{{ _.URL }}/cities/NAVEGANTES"
+    url: "{{ _.URL }}/cities/são francisco"
     name: Read - City
     description: ""
     method: GET
@@ -91,9 +91,9 @@ resources:
     _type: request
   - _id: req_0eff59b3f5d3402cb8bbf99e549af3da
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687957318077
+    modified: 1687983371565
     created: 1687893507867
-    url: "{{ _.URL }}/districts/gravata"
+    url: "{{ _.URL }}/districts/centro"
     name: Read - District
     description: ""
     method: GET
@@ -238,11 +238,11 @@ resources:
     _type: request
   - _id: env_1677a9fabaa881ad0a6c6b40b9e97710485d51b8
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687892914366
+    modified: 1687978210709
     created: 1687892900331
     name: Base Environment
     data:
-      URL: http://localhost:3001/api
+      URL: http://localhost:3001/v1/api
     dataPropertyOrder:
       "&":
         - URL
