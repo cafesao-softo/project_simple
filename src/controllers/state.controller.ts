@@ -2,25 +2,22 @@ import { Controller, Delete, Get, Param, Put } from "@nestjs/common"
 import { AppService } from "../services/app.service"
 import { transformLowercase } from "src/pipes/transformLowercase.pipe"
 
-@Controller("/api/state")
+@Controller("/api/states")
 export class StateController {
   constructor(private readonly appService: AppService) {}
 
-  @Get("/:state")
-  read(@Param("state", transformLowercase) state: string): string {
-    return state
+  @Get("/:stateName")
+  read(@Param("stateName", transformLowercase) stateName: string): string {
+    return stateName
   }
 
-  @Put("/:stateOld/:stateNew")
-  update(
-    @Param("stateOld", transformLowercase) stateOld: string,
-    @Param("stateNew", transformLowercase) stateNew: string
-  ): string {
-    return `${stateOld} and ${stateNew}`
+  @Put("/:stateName")
+  update(@Param("stateName", transformLowercase) stateName: string): string {
+    return stateName
   }
 
-  @Delete("/:state")
-  delete(@Param("state", transformLowercase) state: string): string {
-    return state
+  @Delete("/:stateName")
+  delete(@Param("stateName", transformLowercase) stateName: string): string {
+    return stateName
   }
 }
