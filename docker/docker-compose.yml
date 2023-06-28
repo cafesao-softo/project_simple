@@ -9,11 +9,11 @@ services:
     ports:
       - '${PORT}:${PORT}'
     healthcheck:
-      test: curl --fail http://localhost:$$PORT/api/healthcheck || exit 1
-      interval: 5s
-      timeout: 60s
-      retries: 3
+      test: curl --fail http://localhost:$PORT/v1/api/healthcheck || exit 1
       start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 5
     depends_on:
       db:
         condition: service_healthy
