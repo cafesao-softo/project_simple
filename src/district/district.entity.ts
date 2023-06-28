@@ -5,17 +5,17 @@ import {
   JoinColumn,
   ManyToOne
 } from "typeorm"
-import { CityModel } from "./City"
+import { City } from "../city/city.entity"
 
 @Entity()
-export class DistrictModel {
+export class District {
   @PrimaryGeneratedColumn()
   id?: number
 
   @Column()
   name: string
 
-  @ManyToOne(() => CityModel, (CityModel) => CityModel.district)
+  @ManyToOne(() => City, (City) => City.district)
   @JoinColumn()
-  city?: CityModel
+  city?: City
 }

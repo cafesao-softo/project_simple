@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm"
-import { CityModel } from "./City"
+import { City } from "../city/city.entity"
 
 @Entity()
-export class StateModel {
+export class State {
   @PrimaryGeneratedColumn()
   id?: number
 
@@ -11,6 +11,6 @@ export class StateModel {
   })
   name: string
 
-  @OneToMany(() => CityModel, (CityModel) => CityModel.state)
-  city?: CityModel[]
+  @OneToMany(() => City, (City) => City.state)
+  city?: City[]
 }

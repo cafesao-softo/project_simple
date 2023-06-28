@@ -1,10 +1,10 @@
 import { Controller, Get, HttpCode } from "@nestjs/common"
 
-@Controller("/api/healthcheck")
-export class HealthcheckController {
+@Controller()
+export class AppController {
   constructor() {}
 
-  @Get()
+  @Get("/api/healthcheck")
   @HttpCode(200)
   healthcheck() {
     return "Server is healthy"
