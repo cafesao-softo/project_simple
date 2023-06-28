@@ -11,7 +11,7 @@ export class CityController {
   @Get("/:cityName")
   async read(
     @Param("cityName", transformLowercase) cityName: string
-  ): Promise<City> {
+  ): Promise<City[]> {
     return await this.appService.get(cityName, true)
   }
 

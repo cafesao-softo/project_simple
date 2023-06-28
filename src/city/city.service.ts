@@ -10,8 +10,19 @@ export class CityService {
     private cityRepository: Repository<City>
   ) {}
   public async get(value: string, relations: boolean) {
-    return await this.cityRepository.findOne({
+    return await this.cityRepository.find({
       where: { name: value },
+      relations: relations
+        ? {
+            state: true,
+            district: true
+          }
+        : {}
+    })
+  }
+  public async getOne(city: string, state: string, relations: boolean) {
+    return await this.cityRepository.findOne({
+      where: { name: city, state: { name: state } },
       relations: relations
         ? {
             state: true,
