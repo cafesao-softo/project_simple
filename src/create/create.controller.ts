@@ -6,7 +6,9 @@ import { CityService } from "src/city/city.service"
 import { CreateDTO } from "./dto/create.dto"
 import { CreateHelper } from "./helpers/create.helper"
 import { SyncHelper } from "./helpers/sync.helper"
+import { ApiOperation, ApiTags } from "@nestjs/swagger"
 
+@ApiTags("Create")
 @Controller()
 export class CreateController {
   constructor(
@@ -16,6 +18,9 @@ export class CreateController {
   ) {}
 
   @Post()
+  @ApiOperation({
+    description: "Create new state/city/district"
+  })
   async create(@Body(transformLowercaseBody) body: CreateDTO) {
     const createHelper = new CreateHelper(body)
     const syncHelper = new SyncHelper(this.createService)

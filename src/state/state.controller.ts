@@ -8,12 +8,17 @@ import {
 } from "./dto/update-state.dto"
 import { DeleteStateParamsDTO } from "./dto/delete-state.dto"
 import { ReadStateParamsDTO } from "./dto/read-state.dto"
+import { ApiOperation, ApiTags } from "@nestjs/swagger"
 
+@ApiTags("States")
 @Controller("states")
 export class StateController {
   constructor(private readonly appService: StateService) {}
 
   @Get("/:stateName")
+  @ApiOperation({
+    description: "Get a state by name"
+  })
   async read(
     @Param(transformLowercase) params: ReadStateParamsDTO
   ): Promise<State> {
@@ -21,6 +26,9 @@ export class StateController {
   }
 
   @Put("/:stateName")
+  @ApiOperation({
+    description: "Update a state by name"
+  })
   async update(
     @Body() body: UpdateStateBodyDTO,
     @Param(transformLowercase) params: UpdateStateParamsDTO
@@ -29,6 +37,9 @@ export class StateController {
   }
 
   @Delete("/:stateName")
+  @ApiOperation({
+    description: "Delete a state by name"
+  })
   async delete(@Param(transformLowercase) params: DeleteStateParamsDTO) {
     return await this.appService.delete(params)
   }
