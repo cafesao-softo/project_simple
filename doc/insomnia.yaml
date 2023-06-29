@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2023-06-28T20:37:24.005Z
+__export_date: 2023-06-29T13:00:37.443Z
 __export_source: insomnia.desktop.app:v2023.3.0
 resources:
   - _id: req_f0b47850138b4b9cb1d3809e90717c40
@@ -49,9 +49,9 @@ resources:
     _type: workspace
   - _id: req_8b596590909044f887874f573a954730
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687982753658
+    modified: 1688043470352
     created: 1687893492509
-    url: "{{ _.URL }}/states/sc"
+    url: "{{ _.URL }}/states/mg"
     name: Read - State
     description: ""
     method: GET
@@ -112,15 +112,22 @@ resources:
     _type: request
   - _id: req_b8620f99c7ed48a395d9de65393122b9
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687957330923
+    modified: 1688043462929
     created: 1687893483981
     url: "{{ _.URL }}/states/sc"
     name: Update - State
     description: ""
     method: PUT
-    body: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"mg"
+        }
     parameters: []
-    headers: []
+    headers:
+      - name: Content-Type
+        value: application/json
     authentication: {}
     metaSortKey: -1687893490130
     isPrivate: false
@@ -133,15 +140,22 @@ resources:
     _type: request
   - _id: req_fd7b2833dc8b4f9a9bcd4a8b5d04f71c
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687957328069
+    modified: 1688043308708
     created: 1687895216019
-    url: "{{ _.URL }}/cities/navegantes"
+    url: "{{ _.URL }}/cities/navegantes/sc"
     name: Update - City
     description: ""
     method: PUT
-    body: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "blumenau"
+        }
     parameters: []
-    headers: []
+    headers:
+      - name: Content-Type
+        value: application/json
     authentication: {}
     metaSortKey: -1687439985897.375
     isPrivate: false
@@ -154,15 +168,22 @@ resources:
     _type: request
   - _id: req_9455d582494d4acba57c8784975854b9
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687957323302
+    modified: 1688043331597
     created: 1687895224297
-    url: "{{ _.URL }}/districts/gravata"
+    url: "{{ _.URL }}/districts/blumenau/gravata"
     name: Update - District
     description: ""
     method: PUT
-    body: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+         "name":"centro"
+        }
     parameters: []
-    headers: []
+    headers:
+      - name: Content-Type
+        value: application/json
     authentication: {}
     metaSortKey: -1687213233781.0625
     isPrivate: false
