@@ -30,7 +30,6 @@ export class DistrictService {
     params: UpdateDistrictParamsDTO,
     newData: Partial<District>
   ) {
-    console.log(params)
     const data = await this.districtRepository.findOne({
       where: { name: params.districtName, city: { name: params.cityName } },
       relations: {
