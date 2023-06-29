@@ -2,7 +2,10 @@ import { PipeTransform, Injectable, ArgumentMetadata } from "@nestjs/common"
 
 @Injectable()
 export class transformLowercase implements PipeTransform {
-  transform(value: string, metadata: ArgumentMetadata) {
-    return value.toLowerCase()
+  transform(value: object, metadata: ArgumentMetadata) {
+    Object.keys(value).map((valueMaps) => {
+      value[valueMaps] = value[valueMaps].toLowerCase()
+    })
+    return value
   }
 }

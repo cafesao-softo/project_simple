@@ -1,14 +1,12 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { IsNotEmpty, IsString } from "class-validator"
 
-export class UpdateStateBodyDTO {
+export class ReadCityParamsDTO {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  name: string
-}
+  cityName: string
 
-export class UpdateStateParamsDTO {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()

@@ -2,6 +2,9 @@ import { Injectable } from "@nestjs/common"
 import { Repository } from "typeorm"
 import { City } from "./city.entity"
 import { InjectRepository } from "@nestjs/typeorm"
+import { ReadCityParamsDTO } from "./dto/read-city.dto"
+import { UpdateCityParamsDTO } from "./dto/update-city.dto"
+import { DeleteCityParamsDTO } from "./dto/delete-city.dto"
 
 @Injectable()
 export class CityService {
@@ -9,20 +12,9 @@ export class CityService {
     @InjectRepository(City)
     private cityRepository: Repository<City>
   ) {}
-  public async get(value: string, relations: boolean) {
-    return await this.cityRepository.find({
-      where: { name: value },
-      relations: relations
-        ? {
-            state: true,
-            district: true
-          }
-        : {}
-    })
-  }
-  public async getOne(city: string, state: string, relations: boolean) {
+  public async get(params: ReadCityParamsDTO, relations: boolean) {
     return await this.cityRepository.findOne({
-      where: { name: city, state: { name: state } },
+      where: { name: params.cityName, state: { name: params.stateName } },
       relations: relations
         ? {
             state: true,
@@ -32,16 +24,27 @@ export class CityService {
     })
   }
 
-  public async update(city: string, state: string, newData: Partial<City>) {
+  public async update(params: UpdateCityParamsDTO, newData: Partial<City>) {
     const data = await this.cityRepository.findOne({
-      where: { name: city, state: { name: state } },
+      where: { name: params.cityName, state: { name: params.stateName } },
       relations: {
         state: true,
         district: true
       }
     })
-    data.name = newData.name
-    this.cityRepository.save(data)
-    return true
+    if (data) {
+      data.name = newData.name
+      this.cityRepository.save(data)
+      return true
+    }
+  }
+
+  public async delete(params: DeleteCityParamsDTO) {
+    const data = await this.cityRepository.findOne({
+      where: { name: params.cityName, state: { name: params.stateName } }
+    })
+    if (data) {
+      await this.cityRepository.delete({ id: data.id })
+    }
   }
 }

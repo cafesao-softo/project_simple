@@ -11,6 +11,8 @@ export class State {
   })
   name: string
 
-  @OneToMany(() => City, (City) => City.state)
+  @OneToMany(() => City, (City) => City.state, {
+    onDelete: "CASCADE"
+  })
   city?: City[]
 }

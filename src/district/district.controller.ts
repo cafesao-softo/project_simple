@@ -2,32 +2,34 @@ import { Body, Controller, Delete, Get, Param, Put } from "@nestjs/common"
 import { transformLowercase } from "../shared/pipes/transformLowercase.pipe"
 import { District } from "./district.entity"
 import { DistrictService } from "./district.service"
-import { UpdateDistrictDTO } from "./dto/update-district.dto"
+import {
+  UpdateDistrictBodyDTO,
+  UpdateDistrictParamsDTO
+} from "./dto/update-district.dto"
+import { DeleteDistrictParamsDTO } from "./dto/delete-district.dto"
+import { ReadDistrictParamsDTO } from "./dto/read-district.dto"
 
 @Controller("districts")
 export class DistrictController {
   constructor(private readonly appService: DistrictService) {}
 
-  @Get("/:districtName")
+  @Get("/:districtName/:cityName")
   async read(
-    @Param("districtName", transformLowercase) districtName: string
-  ): Promise<District[]> {
-    return await this.appService.get(districtName, true)
+    @Param(transformLowercase) params: ReadDistrictParamsDTO
+  ): Promise<District> {
+    return await this.appService.get(params, true)
   }
 
-  @Put("/:cityName/:districtName")
+  @Put("/:districtName/:cityName")
   async update(
-    @Body() body: UpdateDistrictDTO,
-    @Param("cityName", transformLowercase) cityName: string,
-    @Param("districtName", transformLowercase) districtName: string
+    @Body() body: UpdateDistrictBodyDTO,
+    @Param(transformLowercase) params: UpdateDistrictParamsDTO
   ) {
-    return await this.appService.update(districtName, cityName, body)
+    return await this.appService.update(params, body)
   }
 
-  @Delete("/:districtName")
-  delete(
-    @Param("districtName", transformLowercase) districtName: string
-  ): string {
-    return districtName
+  @Delete("/:districtName/:cityName")
+  async delete(@Param(transformLowercase) params: DeleteDistrictParamsDTO) {
+    return await this.appService.delete(params)
   }
 }

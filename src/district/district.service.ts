@@ -2,6 +2,9 @@ import { Repository } from "typeorm"
 import { Injectable } from "@nestjs/common"
 import { District } from "./district.entity"
 import { InjectRepository } from "@nestjs/typeorm"
+import { UpdateDistrictParamsDTO } from "./dto/update-district.dto"
+import { DeleteDistrictParamsDTO } from "./dto/delete-district.dto"
+import { ReadDistrictParamsDTO } from "./dto/read-district.dto"
 
 @Injectable()
 export class DistrictService {
@@ -10,22 +13,9 @@ export class DistrictService {
     private districtRepository: Repository<District>
   ) {}
 
-  public async get(value: string, relations: boolean) {
-    return await this.districtRepository.find({
-      where: { name: value },
-      relations: relations
-        ? {
-            city: {
-              state: true
-            }
-          }
-        : {}
-    })
-  }
-
-  public async getOne(district: string, city: string, relations: boolean) {
+  public async get(params: ReadDistrictParamsDTO, relations: boolean) {
     return await this.districtRepository.findOne({
-      where: { name: district, city: { name: city } },
+      where: { name: params.districtName, city: { name: params.cityName } },
       relations: relations
         ? {
             city: {
@@ -37,20 +27,33 @@ export class DistrictService {
   }
 
   public async update(
-    district: string,
-    city: string,
+    params: UpdateDistrictParamsDTO,
     newData: Partial<District>
   ) {
+    console.log(params)
     const data = await this.districtRepository.findOne({
-      where: { name: district, city: { name: city } },
+      where: { name: params.districtName, city: { name: params.cityName } },
       relations: {
         city: {
           state: true
         }
       }
     })
-    data.name = newData.name
-    this.districtRepository.save(data)
-    return true
+    if (data) {
+      data.name = newData.name
+      this.districtRepository.save(data)
+      return true
+    }
+  }
+
+  public async delete(params: DeleteDistrictParamsDTO) {
+    const data = await this.districtRepository.findOne({
+      where: { name: params.districtName, city: { name: params.cityName } }
+    })
+    if (data) {
+      await this.districtRepository.delete({
+        id: data.id
+      })
+    }
   }
 }

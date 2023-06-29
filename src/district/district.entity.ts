@@ -15,7 +15,9 @@ export class District {
   @Column()
   name: string
 
-  @ManyToOne(() => City, (City) => City.district)
+  @ManyToOne(() => City, (City) => City.district, {
+    onDelete: "CASCADE"
+  })
   @JoinColumn()
   city?: City
 }

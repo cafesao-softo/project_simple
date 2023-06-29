@@ -20,10 +20,17 @@ export class CreateController {
     const createHelper = new CreateHelper(body)
     const syncHelper = new SyncHelper(this.createService)
 
-    const isState = await this.stateService.get(body.state.name, false)
-    const isCity = await this.cityService.getOne(
-      body.city.name,
-      body.state.name,
+    const isState = await this.stateService.get(
+      {
+        stateName: body.state.name
+      },
+      false
+    )
+    const isCity = await this.cityService.get(
+      {
+        cityName: body.city.name,
+        stateName: body.state.name
+      },
       false
     )
 

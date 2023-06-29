@@ -16,11 +16,14 @@ export class City {
   @Column()
   name: string
 
-  @ManyToOne(() => State, (State) => State.city)
+  @ManyToOne(() => State, (State) => State.city, {
+    onDelete: "CASCADE"
+  })
   state?: State
 
   @OneToMany(() => District, (District) => District.city, {
-    cascade: true
+    cascade: true,
+    onDelete: "CASCADE"
   })
   district?: District[]
 }
