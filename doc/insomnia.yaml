@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2023-06-29T13:00:37.443Z
+__export_date: 2023-06-29T13:52:34.071Z
 __export_source: insomnia.desktop.app:v2023.3.0
 resources:
   - _id: req_f0b47850138b4b9cb1d3809e90717c40
@@ -49,9 +49,9 @@ resources:
     _type: workspace
   - _id: req_8b596590909044f887874f573a954730
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688043470352
+    modified: 1688046716060
     created: 1687893492509
-    url: "{{ _.URL }}/states/mg"
+    url: "{{ _.URL }}/states/sc"
     name: Read - State
     description: ""
     method: GET
@@ -70,9 +70,9 @@ resources:
     _type: request
   - _id: req_426a5eecdb2b445cb57e1a4200a01557
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687983850822
+    modified: 1688046419980
     created: 1687893502975
-    url: "{{ _.URL }}/cities/são francisco"
+    url: "{{ _.URL }}/cities/são francisco/sc"
     name: Read - City
     description: ""
     method: GET
@@ -91,9 +91,9 @@ resources:
     _type: request
   - _id: req_0eff59b3f5d3402cb8bbf99e549af3da
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687983371565
+    modified: 1688046418434
     created: 1687893507867
-    url: "{{ _.URL }}/districts/centro"
+    url: "{{ _.URL }}/districts/centro/são francisco"
     name: Read - District
     description: ""
     method: GET
@@ -112,7 +112,7 @@ resources:
     _type: request
   - _id: req_b8620f99c7ed48a395d9de65393122b9
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688043462929
+    modified: 1688046494860
     created: 1687893483981
     url: "{{ _.URL }}/states/sc"
     name: Update - State
@@ -140,9 +140,9 @@ resources:
     _type: request
   - _id: req_fd7b2833dc8b4f9a9bcd4a8b5d04f71c
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688043308708
+    modified: 1688046736119
     created: 1687895216019
-    url: "{{ _.URL }}/cities/navegantes/sc"
+    url: "{{ _.URL }}/cities/são francisco/mg"
     name: Update - City
     description: ""
     method: PUT
@@ -168,9 +168,9 @@ resources:
     _type: request
   - _id: req_9455d582494d4acba57c8784975854b9
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688043331597
+    modified: 1688046624969
     created: 1687895224297
-    url: "{{ _.URL }}/districts/blumenau/gravata"
+    url: "{{ _.URL }}/districts/centro/blumenau"
     name: Update - District
     description: ""
     method: PUT
@@ -178,7 +178,7 @@ resources:
       mimeType: application/json
       text: |-
         {
-         "name":"centro"
+         "name":"gravata"
         }
     parameters: []
     headers:
@@ -196,9 +196,9 @@ resources:
     _type: request
   - _id: req_d2b2cb5c84354a8a8caee211b36c7ad7
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687957333942
+    modified: 1688046712991
     created: 1687893581271
-    url: "{{ _.URL }}/states/sc"
+    url: "{{ _.URL }}/states/mg"
     name: Delete - State
     description: ""
     method: DELETE
@@ -217,9 +217,9 @@ resources:
     _type: request
   - _id: req_af3ba89b436842ecbeab947622b7c3a4
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687957337246
+    modified: 1688046709855
     created: 1687893586922
-    url: "{{ _.URL }}/cities/navegantes"
+    url: "{{ _.URL }}/cities/blumenau/mg"
     name: Delete - City
     description: ""
     method: DELETE
@@ -227,7 +227,7 @@ resources:
     parameters: []
     headers: []
     authentication: {}
-    metaSortKey: -1686986481614.75
+    metaSortKey: -1686986481652.25
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -238,9 +238,9 @@ resources:
     _type: request
   - _id: req_f6311ceb831e4c3e863f23eaa6f2957c
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1687957340077
+    modified: 1688046689903
     created: 1687893489337
-    url: "{{ _.URL }}/districts/são paulo"
+    url: "{{ _.URL }}/districts/gravata/blumenau"
     name: Delete - District
     description: ""
     method: DELETE
