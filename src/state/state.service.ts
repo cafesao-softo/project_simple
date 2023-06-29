@@ -22,4 +22,9 @@ export class StateService {
         : {}
     })
   }
+
+  public async update(value: string, newData: Partial<State>) {
+    await this.stateRepository.update({ name: value }, newData)
+    return true
+  }
 }

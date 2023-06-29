@@ -31,4 +31,17 @@ export class CityService {
         : {}
     })
   }
+
+  public async update(city: string, state: string, newData: Partial<City>) {
+    const data = await this.cityRepository.findOne({
+      where: { name: city, state: { name: state } },
+      relations: {
+        state: true,
+        district: true
+      }
+    })
+    data.name = newData.name
+    this.cityRepository.save(data)
+    return true
+  }
 }

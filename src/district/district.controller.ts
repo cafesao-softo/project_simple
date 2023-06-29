@@ -15,12 +15,13 @@ export class DistrictController {
     return await this.appService.get(districtName, true)
   }
 
-  @Put("/:districtName")
-  update(
+  @Put("/:cityName/:districtName")
+  async update(
     @Body() body: UpdateDistrictDTO,
+    @Param("cityName", transformLowercase) cityName: string,
     @Param("districtName", transformLowercase) districtName: string
-  ): string {
-    return districtName
+  ) {
+    return await this.appService.update(districtName, cityName, body)
   }
 
   @Delete("/:districtName")

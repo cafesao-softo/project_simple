@@ -15,12 +15,13 @@ export class CityController {
     return await this.appService.get(cityName, true)
   }
 
-  @Put("/:cityName")
-  update(
+  @Put("/:cityName/:stateName")
+  async update(
     @Body() body: UpdateCityDTO,
-    @Param("cityName", transformLowercase) cityName: string
-  ): string {
-    return cityName
+    @Param("cityName", transformLowercase) cityName: string,
+    @Param("stateName", transformLowercase) stateName: string
+  ) {
+    return await this.appService.update(cityName, stateName, body)
   }
 
   @Delete("/:cityName")

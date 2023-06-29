@@ -31,7 +31,7 @@ export class CreateController {
       const district = createHelper.createDistrict(isCity)
       await syncHelper.createDistrict(district)
     } else if (isState) {
-      const district = await createHelper.createDistrict()
+      const district = createHelper.createDistrict()
       const city = createHelper.createCity(isState, district)
       await syncHelper.createDistrict(district)
       await syncHelper.createCity(city)

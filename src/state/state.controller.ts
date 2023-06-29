@@ -16,11 +16,11 @@ export class StateController {
   }
 
   @Put("/:stateName")
-  update(
+  async update(
     @Body() body: UpdateStateDTO,
     @Param("stateName", transformLowercase) stateName: string
-  ): string {
-    return stateName
+  ) {
+    return await this.appService.update(stateName, body)
   }
 
   @Delete("/:stateName")
