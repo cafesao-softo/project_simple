@@ -22,7 +22,7 @@ export class StateController {
   async read(
     @Param(transformLowercase) params: ReadStateParamsDTO
   ): Promise<State> {
-    return await this.appService.get(params, true)
+    return await this.appService.read(params, true)
   }
 
   @Put("/:stateName")

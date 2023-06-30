@@ -13,7 +13,7 @@ export class DistrictService {
     private districtRepository: Repository<District>
   ) {}
 
-  public async get(params: ReadDistrictParamsDTO, relations: boolean) {
+  public async read(params: ReadDistrictParamsDTO, relations: boolean) {
     return await this.districtRepository.findOne({
       where: { name: params.districtName, city: { name: params.cityName } },
       relations: relations

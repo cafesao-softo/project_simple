@@ -7,12 +7,12 @@ import { District } from "src/district/district.entity"
 export class CreateHelper {
   constructor(private readonly body: CreateDTO) {}
 
-  public createState() {
+  public state() {
     const state = new State()
     state.name = this.body.state.name
 
-    const district = this.createDistrict()
-    const city = this.createCity(state, district)
+    const district = this.district()
+    const city = this.city(state, district)
 
     state.city = [city]
 
@@ -23,7 +23,7 @@ export class CreateHelper {
     }
   }
 
-  public createCity(state: State, district: District) {
+  public city(state: State, district: District) {
     const city = new City()
     city.name = this.body.city.name
     city.district = [district]
@@ -31,7 +31,7 @@ export class CreateHelper {
     return city
   }
 
-  public createDistrict(city?: City) {
+  public district(city?: City) {
     const district = new District()
     district.name = this.body.district.name
     district.city = city ? city : undefined

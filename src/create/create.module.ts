@@ -6,7 +6,7 @@ import { CityModule } from "src/city/city.module"
 import { StateModule } from "src/state/state.module"
 
 @Module({
-  imports: [TypeOrmModule.forFeature(), CityModule, StateModule],
+  imports: [TypeOrmModule.forFeature(), StateModule, CityModule],
   controllers: [CreateController],
   providers: [CreateService]
 })

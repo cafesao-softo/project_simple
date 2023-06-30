@@ -12,7 +12,7 @@ export class CityService {
     @InjectRepository(City)
     private cityRepository: Repository<City>
   ) {}
-  public async get(params: ReadCityParamsDTO, relations: boolean) {
+  public async read(params: ReadCityParamsDTO, relations: boolean) {
     return await this.cityRepository.findOne({
       where: { name: params.cityName, state: { name: params.stateName } },
       relations: relations

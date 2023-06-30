@@ -22,7 +22,7 @@ export class DistrictController {
   async read(
     @Param(transformLowercase) params: ReadDistrictParamsDTO
   ): Promise<District> {
-    return await this.appService.get(params, true)
+    return await this.appService.read(params, true)
   }
 
   @Put("/:districtName/:cityName")

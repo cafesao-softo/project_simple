@@ -25,13 +25,13 @@ export class CreateController {
     const createHelper = new CreateHelper(body)
     const syncHelper = new SyncHelper(this.createService)
 
-    const isState = await this.stateService.get(
+    const isState = await this.stateService.read(
       {
         stateName: body.state.name
       },
       false
     )
-    const isCity = await this.cityService.get(
+    const isCity = await this.cityService.read(
       {
         cityName: body.city.name,
         stateName: body.state.name
@@ -40,18 +40,18 @@ export class CreateController {
     )
 
     if (isState && isCity) {
-      const district = createHelper.createDistrict(isCity)
-      await syncHelper.createDistrict(district)
+      const district = createHelper.district(isCity)
+      await syncHelper.district(district)
     } else if (isState) {
-      const district = createHelper.createDistrict()
-      const city = createHelper.createCity(isState, district)
-      await syncHelper.createDistrict(district)
-      await syncHelper.createCity(city)
+      const district = createHelper.district()
+      const city = createHelper.city(isState, district)
+      await syncHelper.district(district)
+      await syncHelper.city(city)
     } else {
-      const { state, city, district } = createHelper.createState()
-      await syncHelper.syncState(state)
-      await syncHelper.createCity(city)
-      await syncHelper.createDistrict(district)
+      const { state, city, district } = createHelper.state()
+      await syncHelper.state(state)
+      await syncHelper.city(city)
+      await syncHelper.district(district)
     }
   }
 }

@@ -13,7 +13,7 @@ export class StateService {
     private readonly stateRepository: Repository<State>
   ) {}
 
-  public async get(params: ReadStateParamsDTO, relations: boolean) {
+  public async read(params: ReadStateParamsDTO, relations: boolean) {
     return await this.stateRepository.findOne({
       where: { name: params.stateName },
       relations: relations

@@ -6,15 +6,15 @@ import { District } from "src/district/district.entity"
 export class SyncHelper {
   constructor(private readonly createService: CreateService) {}
 
-  public async syncState(state: State) {
+  public async state(state: State) {
     await this.createService.create(state)
   }
 
-  public async createCity(city: City) {
+  public async city(city: City) {
     await this.createService.create(city)
   }
 
-  public async createDistrict(district: District) {
+  public async district(district: District) {
     await this.createService.create(district)
   }
 }

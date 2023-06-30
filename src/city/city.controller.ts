@@ -18,7 +18,7 @@ export class CityController {
   async read(
     @Param(transformLowercase) params: UpdateCityParamsDTO
   ): Promise<City> {
-    return await this.appService.get(params, true)
+    return await this.appService.read(params, true)
   }
 
   @Put("/:cityName/:stateName")
