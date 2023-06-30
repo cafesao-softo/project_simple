@@ -8,14 +8,18 @@ import {
 } from "class-validator"
 
 class DistrictNameDTO {
-  @ApiProperty()
+  @ApiProperty({
+    example: "Centro"
+  })
   @IsString()
   @IsNotEmpty()
   name: string
 }
 
 class CityNameDTO {
-  @ApiProperty()
+  @ApiProperty({
+    example: "Navegantes"
+  })
   @IsString()
   @IsNotEmpty()
   name: string
@@ -27,7 +31,9 @@ class CityNameDTO {
 }
 
 class StateNameDTO {
-  @ApiProperty()
+  @ApiProperty({
+    example: "Santa Catarina"
+  })
   @MaxLength(2)
   @IsString()
   @IsNotEmpty()
