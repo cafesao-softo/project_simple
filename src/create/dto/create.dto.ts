@@ -7,9 +7,8 @@ import {
   ValidateNested
 } from "class-validator"
 
-class StateNameDTO {
+class DistrictNameDTO {
   @ApiProperty()
-  @MaxLength(2)
   @IsString()
   @IsNotEmpty()
   name: string
@@ -20,13 +19,24 @@ class CityNameDTO {
   @IsString()
   @IsNotEmpty()
   name: string
+
+  @ApiProperty()
+  @ValidateNested()
+  @Type(() => DistrictNameDTO)
+  district: DistrictNameDTO
 }
 
-class DistrictNameDTO {
+class StateNameDTO {
   @ApiProperty()
+  @MaxLength(2)
   @IsString()
   @IsNotEmpty()
   name: string
+
+  @ApiProperty()
+  @ValidateNested()
+  @Type(() => CityNameDTO)
+  city: CityNameDTO
 }
 
 export class CreateDTO {
@@ -34,14 +44,4 @@ export class CreateDTO {
   @ValidateNested()
   @Type(() => StateNameDTO)
   state: StateNameDTO
-
-  @ApiProperty()
-  @ValidateNested()
-  @Type(() => CityNameDTO)
-  city: CityNameDTO
-
-  @ApiProperty()
-  @ValidateNested()
-  @Type(() => DistrictNameDTO)
-  district: DistrictNameDTO
 }

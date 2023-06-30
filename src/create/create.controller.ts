@@ -33,7 +33,7 @@ export class CreateController {
     )
     const isCity = await this.cityService.read(
       {
-        cityName: body.city.name,
+        cityName: body.state.city.name,
         stateName: body.state.name
       },
       false

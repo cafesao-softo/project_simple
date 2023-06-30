@@ -25,7 +25,7 @@ export class CreateHelper {
 
   public city(state: State, district: District) {
     const city = new City()
-    city.name = this.body.city.name
+    city.name = this.body.state.city.name
     city.district = [district]
     city.state = state
     return city
@@ -33,7 +33,7 @@ export class CreateHelper {
 
   public district(city?: City) {
     const district = new District()
-    district.name = this.body.district.name
+    district.name = this.body.state.city.district.name
     district.city = city ? city : undefined
     return district
   }
