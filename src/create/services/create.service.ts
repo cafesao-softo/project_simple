@@ -7,7 +7,7 @@ import { District } from "src/district/district.entity"
 @Injectable()
 export class CreateService {
   constructor(private dataSource: DataSource) {}
-  public async create(data: State | City | District) {
+  public async execute(data: State | City | District) {
     await this.dataSource.manager.save(data)
     return true
   }

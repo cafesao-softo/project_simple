@@ -1,5 +1,5 @@
 import { State } from "src/state/state.entity"
-import { CreateService } from "../create.service"
+import { CreateService } from "../services/create.service"
 import { CreateDTO } from "../dto/create.dto"
 import { City } from "src/city/city.entity"
 import { District } from "src/district/district.entity"

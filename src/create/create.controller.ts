@@ -1,37 +1,37 @@
 import { Body, Controller, Post } from "@nestjs/common"
-import { transformLowercaseBody } from "src/shared/pipes/transformLowercaseBody.pipe"
-import { CreateService } from "./create.service"
-import { StateService } from "src/state/state.service"
-import { CityService } from "src/city/city.service"
+import { CreateService } from "./services/create.service"
 import { CreateDTO } from "./dto/create.dto"
 import { CreateHelper } from "./helpers/create.helper"
 import { SyncHelper } from "./helpers/sync.helper"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
+import { ReadStateService } from "src/state/services/read-state.service"
+import { ReadCityService } from "src/city/services/read-city.service"
+import { transformLowercaseBodyCreate } from "src/shared/pipes/transformLowercaseBodyCreate.pipe"
 
 @ApiTags("Create")
 @Controller()
 export class CreateController {
   constructor(
     private readonly createService: CreateService,
-    private readonly stateService: StateService,
-    private readonly cityService: CityService
+    private readonly readStateService: ReadStateService,
+    private readonly readCityService: ReadCityService
   ) {}
 
   @Post()
   @ApiOperation({
     description: "Create new state/city/district"
   })
-  async create(@Body(transformLowercaseBody) body: CreateDTO) {
+  async create(@Body(transformLowercaseBodyCreate) body: CreateDTO) {
     const createHelper = new CreateHelper(body)
     const syncHelper = new SyncHelper(this.createService)
 
-    const isState = await this.stateService.read(
+    const isState = await this.readStateService.execute(
       {
         stateName: body.state.name
       },
       false
     )
-    const isCity = await this.cityService.read(
+    const isCity = await this.readCityService.execute(
       {
         cityName: body.state.city.name,
         stateName: body.state.name
