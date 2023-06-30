@@ -12,5 +12,5 @@ export class UpdateStateParamsDTO {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  stateName: string
+  id: number
 }

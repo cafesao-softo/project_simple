@@ -1,6 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { IsNotEmpty, IsString } from "class-validator"
 
+export class ReadDistrictIdParamsDTO {
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  id: number
+}
+
 export class ReadDistrictParamsDTO {
   @ApiProperty()
   @IsString()

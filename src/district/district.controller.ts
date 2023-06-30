@@ -7,7 +7,10 @@ import {
   UpdateDistrictParamsDTO
 } from "./dto/update-district.dto"
 import { DeleteDistrictParamsDTO } from "./dto/delete-district.dto"
-import { ReadDistrictParamsDTO } from "./dto/read-district.dto"
+import {
+  ReadDistrictIdParamsDTO,
+  ReadDistrictParamsDTO
+} from "./dto/read-district.dto"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
 
 @ApiTags("Districts")
@@ -15,17 +18,17 @@ import { ApiOperation, ApiTags } from "@nestjs/swagger"
 export class DistrictController {
   constructor(private readonly appService: DistrictService) {}
 
-  @Get("/:districtName/:cityName")
+  @Get("/:id")
   @ApiOperation({
     description: "Get district by name and city name"
   })
   async read(
-    @Param(transformLowercase) params: ReadDistrictParamsDTO
+    @Param(transformLowercase) params: ReadDistrictIdParamsDTO
   ): Promise<District> {
-    return await this.appService.read(params, true)
+    return await this.appService.readId(params, true)
   }
 
-  @Put("/:districtName/:cityName")
+  @Put("/:id")
   @ApiOperation({
     description: "Update district by name and city name"
   })
@@ -36,7 +39,7 @@ export class DistrictController {
     return await this.appService.update(params, body)
   }
 
-  @Delete("/:districtName/:cityName")
+  @Delete("/:id")
   @ApiOperation({
     description: "Delete district by name and city name"
   })

@@ -5,10 +5,5 @@ export class DeleteDistrictParamsDTO {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  cityName: string
-
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  districtName: string
+  id: number
 }

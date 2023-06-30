@@ -12,10 +12,5 @@ export class UpdateCityParamsDTO {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  cityName: string
-
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  stateName: string
+  id: number
 }

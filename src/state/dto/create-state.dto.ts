@@ -3,7 +3,9 @@ import { IsNotEmpty, IsString } from "class-validator"
 import { City } from "src/city/city.entity"
 
 export class CreateStateDTO {
-  @ApiProperty()
+  @ApiProperty({
+    example: "são paulo"
+  })
   @IsString()
   @IsNotEmpty()
   name: string

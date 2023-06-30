@@ -5,5 +5,5 @@ export class DeleteStateParamsDTO {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  stateName: string
+  id: number
 }
