@@ -8,9 +8,9 @@ import { CityModule } from "./city/city.module"
 import { DistrictModule } from "./district/district.module"
 import { AppController } from "./app.controler"
 import { CreateModule } from "./create/create.module"
-import { District } from "./district/district.entity"
-import { City } from "./city/city.entity"
-import { State } from "./state/state.entity"
+import { District } from "./infra/repositories/typeorm/mapper/district.mapper"
+import { City } from "./infra/repositories/typeorm/mapper/city.mapper"
+import { State } from "./infra/repositories/typeorm/mapper/state.mapper"
 
 @Module({
   imports: [
