@@ -37,13 +37,13 @@ export class CreateController {
       stateName: body.state.name
     })
 
-    if (isState && isCity) {
+    if (isState.getState().id !== "" && isCity.getState().id !== "") {
       await this.createDistrictCommand.execute({
         name: body.state.city.name,
         cityId: isCity.getState().id
       })
       return true
-    } else if (isState) {
+    } else if (isState.getState().id !== "") {
       const city = await this.createCityCommand.execute({
         name: body.state.city.name,
         stateId: isState.getState().id

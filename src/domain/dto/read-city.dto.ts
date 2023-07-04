@@ -9,9 +9,3 @@ export class IReadCityParamsDTO {
   @IsNotEmpty()
   id: string
 }
-
-export class IReadCityServiceDTO {
-  id?: string
-  cityName?: string
-  stateName?: string
-}

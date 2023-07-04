@@ -3,6 +3,7 @@ import { IStateRepository } from "src/domain/repositories/state.repository"
 import { DataSource } from "typeorm"
 import { StateMapper } from "./mapper/state.mapper"
 import { Injectable } from "@nestjs/common"
+import { StateAssembler } from "./assembler/state.assembler"
 
 @Injectable()
 export class StateRepository implements IStateRepository {
@@ -17,7 +18,7 @@ export class StateRepository implements IStateRepository {
     return true
   }
 
-  async findOne(data: IStateRepository.FindOne): Promise<StateEntity | false> {
+  async findOne(data: IStateRepository.FindOne): Promise<StateEntity> {
     const repository = this.connection.getRepository(StateMapper)
     const fetch = await repository.findOne({
       where: { id: data.id },
@@ -28,29 +29,12 @@ export class StateRepository implements IStateRepository {
       }
     })
 
-    if (!fetch) return new StateEntity()
-
-    return new StateEntity({
-      id: fetch.id,
-      name: fetch.name,
-      cities: fetch.cities.map((city) => {
-        return {
-          id: city.id,
-          name: city.name,
-          districts: city.districts.map((district) => {
-            return {
-              id: district.id,
-              name: district.name
-            }
-          })
-        }
-      })
-    })
+    return StateAssembler.assembly(fetch)
   }
 
   async findWithName(
     params: IStateRepository.FindWithName
-  ): Promise<StateEntity | false> {
+  ): Promise<StateEntity> {
     const repository = this.connection.getRepository(StateMapper)
     const fetch = await repository.findOne({
       where: { name: params.name },
@@ -61,24 +45,7 @@ export class StateRepository implements IStateRepository {
       }
     })
 
-    if (!fetch) return false
-
-    return new StateEntity({
-      id: fetch.id,
-      name: fetch.name,
-      cities: fetch.cities.map((city) => {
-        return {
-          id: city.id,
-          name: city.name,
-          districts: city.districts.map((district) => {
-            return {
-              id: district.id,
-              name: district.name
-            }
-          })
-        }
-      })
-    })
+    return StateAssembler.assembly(fetch)
   }
 
   async findAll(): Promise<StateEntity[]> {
@@ -93,25 +60,7 @@ export class StateRepository implements IStateRepository {
 
     if (!fetch) return [new StateEntity()]
 
-    return fetch.map(
-      (state) =>
-        new StateEntity({
-          id: state.id,
-          name: state.name,
-          cities: state.cities.map((city) => {
-            return {
-              id: city.id,
-              name: city.name,
-              districts: city.districts.map((district) => {
-                return {
-                  id: district.id,
-                  name: district.name
-                }
-              })
-            }
-          })
-        })
-    )
+    return fetch.map((state) => StateAssembler.assembly(state))
   }
 
   async update(

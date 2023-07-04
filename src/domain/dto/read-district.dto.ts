@@ -8,9 +8,3 @@ export class IReadDistrictParamsDTO {
   @IsNotEmpty()
   id: string
 }
-
-export class IReadDistrictServiceDTO {
-  id?: string
-  cityName?: string
-  districtName?: string
-}

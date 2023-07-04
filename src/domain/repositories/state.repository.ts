@@ -2,10 +2,8 @@ import { StateEntity } from "../entities/state.entity"
 
 export interface IStateRepository {
   create(params: IStateRepository.Create): Promise<boolean>
-  findOne(params: IStateRepository.FindOne): Promise<StateEntity | false>
-  findWithName(
-    params: IStateRepository.FindWithName
-  ): Promise<StateEntity | false>
+  findOne(params: IStateRepository.FindOne): Promise<StateEntity>
+  findWithName(params: IStateRepository.FindWithName): Promise<StateEntity>
   findAll(): Promise<StateEntity[]>
   update(
     query: IStateRepository.UpdateQuery,

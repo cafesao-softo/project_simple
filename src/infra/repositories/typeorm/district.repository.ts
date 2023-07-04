@@ -3,12 +3,14 @@ import { IDistrictRepository } from "src/domain/repositories/district.repository
 import { DistrictEntity } from "src/domain/entities/district.entity"
 import { DistrictMapper } from "./mapper/district.mapper"
 import { Injectable } from "@nestjs/common"
+import { DistrictAssembler } from "./assembler/district.assembler"
 
 @Injectable()
 export class DistrictRepository implements IDistrictRepository {
   constructor(private readonly connection: DataSource) {}
 
   async create(data: IDistrictRepository.Create): Promise<boolean> {
+    console.log(data)
     const repository = this.connection.getRepository(DistrictMapper)
     await repository.save({
       id: data.getState().id,
@@ -18,9 +20,7 @@ export class DistrictRepository implements IDistrictRepository {
     return true
   }
 
-  async findOne(
-    data: IDistrictRepository.FindOne
-  ): Promise<DistrictEntity | false> {
+  async findOne(data: IDistrictRepository.FindOne): Promise<DistrictEntity> {
     const repository = this.connection.getRepository(DistrictMapper)
     const fetch = await repository.findOne({
       where: { id: data.id },
@@ -29,13 +29,7 @@ export class DistrictRepository implements IDistrictRepository {
       }
     })
 
-    if (!fetch) return new DistrictEntity()
-
-    return new DistrictEntity({
-      id: fetch.id,
-      name: fetch.name,
-      cityId: fetch.city.id
-    })
+    return DistrictAssembler.assembly(fetch)
   }
 
   async update(

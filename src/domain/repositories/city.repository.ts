@@ -2,10 +2,10 @@ import { CityEntity } from "../entities/city.entity"
 
 export interface ICityRepository {
   create(params: ICityRepository.Create): Promise<boolean>
-  findOne(params: ICityRepository.FindOne): Promise<CityEntity | false>
+  findOne(params: ICityRepository.FindOne): Promise<CityEntity>
   findWithNameAndState(
     params: ICityRepository.FindWithNameAndState
-  ): Promise<CityEntity | false>
+  ): Promise<CityEntity>
   update(
     query: ICityRepository.UpdateQuery,
     body: ICityRepository.UpdateBody

@@ -3,6 +3,7 @@ import { ICityRepository } from "src/domain/repositories/city.repository"
 import { CityMapper } from "./mapper/city.mapper"
 import { DataSource } from "typeorm"
 import { Injectable } from "@nestjs/common"
+import { CityAssembler } from "src/infra/repositories/typeorm/assembler/city.assembler"
 
 @Injectable()
 export class CityRepository implements ICityRepository {
@@ -10,6 +11,7 @@ export class CityRepository implements ICityRepository {
 
   async create(data: CityEntity): Promise<boolean> {
     const repository = this.connection.getRepository(CityMapper)
+
     await repository.save({
       id: data.getState().id,
       name: data.getState().name,
@@ -18,7 +20,7 @@ export class CityRepository implements ICityRepository {
     return true
   }
 
-  async findOne(data: ICityRepository.FindOne): Promise<CityEntity | false> {
+  async findOne(data: ICityRepository.FindOne): Promise<CityEntity> {
     const repository = this.connection.getRepository(CityMapper)
     const fetch = await repository.findOne({
       where: { id: data.id },
@@ -28,24 +30,12 @@ export class CityRepository implements ICityRepository {
       }
     })
 
-    if (!fetch) return new CityEntity()
-
-    return new CityEntity({
-      id: fetch.id,
-      name: fetch.name,
-      stateId: fetch.state.id,
-      districts: fetch.districts.map((district) => {
-        return {
-          id: district.id,
-          name: district.name
-        }
-      })
-    })
+    return CityAssembler.assembly(fetch)
   }
 
   async findWithNameAndState(
     params: ICityRepository.FindWithNameAndState
-  ): Promise<CityEntity | false> {
+  ): Promise<CityEntity> {
     const repository = this.connection.getRepository(CityMapper)
     const fetch = await repository.findOne({
       where: { name: params.cityName, state: { name: params.stateName } },
@@ -55,19 +45,7 @@ export class CityRepository implements ICityRepository {
       }
     })
 
-    if (!fetch) return false
-
-    return new CityEntity({
-      id: fetch.id,
-      name: fetch.name,
-      stateId: fetch.state.id,
-      districts: fetch.districts.map((district) => {
-        return {
-          id: district.id,
-          name: district.name
-        }
-      })
-    })
+    return CityAssembler.assembly(fetch)
   }
 
   async update(
