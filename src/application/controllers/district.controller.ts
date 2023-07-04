@@ -1,22 +1,22 @@
 import { Body, Controller, Delete, Get, Param, Put } from "@nestjs/common"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
-import { ReadDistrictCommand } from "../commands/read-district.commands"
-import { UpdateDistrictCommand } from "../commands/update-district.commands"
-import { DeleteDistrictCommand } from "../commands/delete-district.commands"
 import { transformLowercase } from "src/domain/pipes/transformLowercase.pipe"
-import { ReadDistrictParamsDTO } from "src/domain/dto/read-district.dto"
-import {
-  UpdateDistrictBodyDTO,
-  UpdateDistrictParamsDTO
-} from "src/domain/dto/update-district.dto"
-import { DeleteDistrictParamsDTO } from "src/domain/dto/delete-district.dto"
 import { StateEntity } from "src/domain/entities/state.entity"
+import { IReadDistrictParamsDTO } from "src/domain/dto/read-district.dto"
+import {
+  IUpdateDistrictBodyDTO,
+  IUpdateDistrictParamsDTO
+} from "src/domain/dto/update-district.dto"
+import { IDeleteDistrictParamsDTO } from "src/domain/dto/delete-district.dto"
+import { ReadDistrictQuery } from "../queries/read-district.query"
+import { UpdateDistrictCommand } from "../commands/update-district.command"
+import { DeleteDistrictCommand } from "../commands/delete-district.command"
 
 @ApiTags("Districts")
 @Controller("districts")
 export class DistrictController {
   constructor(
-    private readonly readDistrictCommand: ReadDistrictCommand,
+    private readonly readDistrictQuery: ReadDistrictQuery,
     private readonly updateDistrictCommand: UpdateDistrictCommand,
     private readonly deleteDistrictCommand: DeleteDistrictCommand
   ) {}
@@ -26,9 +26,9 @@ export class DistrictController {
     description: "Get district by name and city name"
   })
   async read(
-    @Param(transformLowercase) params: ReadDistrictParamsDTO
+    @Param(transformLowercase) params: IReadDistrictParamsDTO
   ): Promise<StateEntity | boolean> {
-    return await this.readDistrictCommand.execute(params)
+    return await this.readDistrictQuery.execute(params)
   }
 
   @Put("/:id")
@@ -36,8 +36,8 @@ export class DistrictController {
     description: "Update district by name and city name"
   })
   async update(
-    @Body() body: UpdateDistrictBodyDTO,
-    @Param(transformLowercase) params: UpdateDistrictParamsDTO
+    @Body() body: IUpdateDistrictBodyDTO,
+    @Param(transformLowercase) params: IUpdateDistrictParamsDTO
   ) {
     return await this.updateDistrictCommand.execute(params, body)
   }
@@ -46,7 +46,7 @@ export class DistrictController {
   @ApiOperation({
     description: "Delete district by name and city name"
   })
-  async delete(@Param(transformLowercase) params: DeleteDistrictParamsDTO) {
+  async delete(@Param(transformLowercase) params: IDeleteDistrictParamsDTO) {
     return await this.deleteDistrictCommand.execute(params)
   }
 }

@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { IsNotEmpty, IsString } from "class-validator"
 
-export class UpdateDistrictBodyDTO {
+export class IUpdateDistrictBodyDTO {
   @ApiProperty({
     example: "Centro"
   })
@@ -10,7 +10,7 @@ export class UpdateDistrictBodyDTO {
   name: string
 }
 
-export class UpdateDistrictParamsDTO {
+export class IUpdateDistrictParamsDTO {
   @ApiProperty({
     example: 1
   })

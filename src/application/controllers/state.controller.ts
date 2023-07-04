@@ -1,22 +1,22 @@
 import { Body, Controller, Delete, Get, Param, Put } from "@nestjs/common"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
-import { ReadStateCommand } from "../commands/read-state.commands"
-import { UpdateStateCommand } from "../commands/update-state.commands"
-import { DeleteStateCommand } from "../commands/delete-state.commands"
 import { transformLowercase } from "src/domain/pipes/transformLowercase.pipe"
 import { StateEntity } from "src/domain/entities/state.entity"
-import { ReadStateParamsDTO } from "src/domain/dto/read-state.dto"
+import { IReadStateParamsDTO } from "src/domain/dto/read-state.dto"
 import {
-  UpdateStateBodyDTO,
-  UpdateStateParamsDTO
+  IUpdateStateBodyDTO,
+  IUpdateStateParamsDTO
 } from "src/domain/dto/update-state.dto"
-import { DeleteStateParamsDTO } from "src/domain/dto/delete-state.dto"
+import { IDeleteStateParamsDTO } from "src/domain/dto/delete-state.dto"
+import { ReadStateQuery } from "../queries/read-state.query"
+import { UpdateStateCommand } from "../commands/update-state.command"
+import { DeleteStateCommand } from "../commands/delete-state.command"
 
 @ApiTags("States")
 @Controller("states")
 export class StateController {
   constructor(
-    private readonly readStateCommand: ReadStateCommand,
+    private readonly readStateQuery: ReadStateQuery,
     private readonly updateStateCommand: UpdateStateCommand,
     private readonly deleteStateCommand: DeleteStateCommand
   ) {}
@@ -26,9 +26,9 @@ export class StateController {
     description: "Get a state by name"
   })
   async read(
-    @Param(transformLowercase) params: ReadStateParamsDTO
+    @Param(transformLowercase) params: IReadStateParamsDTO
   ): Promise<StateEntity | boolean> {
-    return await this.readStateCommand.execute(params)
+    return await this.readStateQuery.execute(params)
   }
 
   @Put("/:id")
@@ -36,8 +36,8 @@ export class StateController {
     description: "Update a state by name"
   })
   async update(
-    @Body() body: UpdateStateBodyDTO,
-    @Param(transformLowercase) params: UpdateStateParamsDTO
+    @Body() body: IUpdateStateBodyDTO,
+    @Param(transformLowercase) params: IUpdateStateParamsDTO
   ) {
     return await this.updateStateCommand.execute(params, body)
   }
@@ -46,7 +46,7 @@ export class StateController {
   @ApiOperation({
     description: "Delete a state by name"
   })
-  async delete(@Param(transformLowercase) params: DeleteStateParamsDTO) {
+  async delete(@Param(transformLowercase) params: IDeleteStateParamsDTO) {
     return await this.deleteStateCommand.execute(params)
   }
 }

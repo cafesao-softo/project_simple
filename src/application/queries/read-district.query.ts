@@ -1,18 +1,17 @@
 import { Injectable } from "@nestjs/common"
-import { ReadDistrictParamsDTO } from "src/domain/dto/read-district.dto"
+import { IReadDistrictParamsDTO } from "src/domain/dto/read-district.dto"
 import { CityEntity } from "src/domain/entities/city.entity"
 import { DistrictEntity } from "src/domain/entities/district.entity"
 import { StateEntity } from "src/domain/entities/state.entity"
-import { IReadDistrictRepository } from "src/domain/repositories/read-district.repository"
 import { ReadDistrictRepository } from "src/infra/repositories/typeorm/read-district.repository"
 
 @Injectable()
-export class ReadDistrictCommand {
+export class ReadDistrictQuery {
   constructor(
     private readonly readDistrictRepository: ReadDistrictRepository
   ) {}
 
-  async execute(params: ReadDistrictParamsDTO) {
+  async execute(params: IReadDistrictParamsDTO) {
     const data = await this.readDistrictRepository.execute({
       id: params.id
     })
@@ -38,6 +37,6 @@ export class ReadDistrictCommand {
   }
 }
 
-export namespace ReadDistrictCommand {
+export namespace ReadDistrictQuery {
   export type Params = DistrictEntity.Read
 }

@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { IsNotEmpty, IsString } from "class-validator"
 
-export class ReadCityParamsDTO {
+export class IReadCityParamsDTO {
   @ApiProperty({
     example: 1
   })
@@ -10,7 +10,7 @@ export class ReadCityParamsDTO {
   id: string
 }
 
-export class ReadCityServiceDTO {
+export class IReadCityServiceDTO {
   id?: string
   cityName?: string
   stateName?: string

@@ -1,9 +1,9 @@
 import { PipeTransform, Injectable, ArgumentMetadata } from "@nestjs/common"
-import { CreateDTO } from "../dto/create.dto"
+import { ICreateDTO } from "../dto/create.dto"
 
 @Injectable()
 export class transformLowercaseBody implements PipeTransform {
-  transform(value: CreateDTO, metadata: ArgumentMetadata) {
+  transform(value: ICreateDTO, metadata: ArgumentMetadata) {
     Object.keys(value).map((valueMaps) => {
       value[valueMaps]["name"] = value[valueMaps]["name"].toLowerCase()
     })

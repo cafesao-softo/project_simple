@@ -7,14 +7,14 @@ export class SyncHelper {
   constructor(private readonly createRepository: ICreateRepositoy) {}
 
   public async state(state: StateMapper) {
-    await this.createRepository.execute(state)
+    await this.createRepository.execute({ data: state })
   }
 
   public async city(city: CityMapper) {
-    await this.createRepository.execute(city)
+    await this.createRepository.execute({ data: city })
   }
 
   public async district(district: DistrictMapper) {
-    await this.createRepository.execute(district)
+    await this.createRepository.execute({ data: district })
   }
 }

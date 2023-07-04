@@ -45,7 +45,7 @@ class StateNameDTO {
   city: CityNameDTO
 }
 
-export class CreateDTO {
+export class ICreateDTO {
   @ApiProperty()
   @ValidateNested()
   @Type(() => StateNameDTO)

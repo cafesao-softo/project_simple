@@ -1,14 +1,12 @@
 import { Injectable } from "@nestjs/common"
 import { DataSource } from "typeorm"
-import { StateMapper } from "./mapper/state.mapper"
-import { CityMapper } from "./mapper/city.mapper"
-import { DistrictMapper } from "./mapper/district.mapper"
+import { ICreateRepositoy } from "src/domain/repositories/create.repository"
 
 @Injectable()
-export class CreateRepository {
+export class CreateRepository implements ICreateRepositoy {
   constructor(private dataSource: DataSource) {}
-  public async execute(data: StateMapper | CityMapper | DistrictMapper) {
-    await this.dataSource.manager.save(data)
+  public async execute(params: ICreateRepositoy.Params) {
+    await this.dataSource.manager.save(params.data)
     return true
   }
 }

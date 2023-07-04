@@ -3,5 +3,11 @@ import { CityMapper } from "src/infra/repositories/typeorm/mapper/city.mapper"
 import { DistrictMapper } from "src/infra/repositories/typeorm/mapper/district.mapper"
 
 export interface ICreateRepositoy {
-  execute(data: StateMapper | CityMapper | DistrictMapper): Promise<boolean>
+  execute(data: ICreateRepositoy.Params): Promise<boolean>
+}
+
+export namespace ICreateRepositoy {
+  export interface Params {
+    data: StateMapper | CityMapper | DistrictMapper
+  }
 }

@@ -1,3 +1,3 @@
-export interface UUIDManager {
+export interface IUUID {
   generate(): string
 }

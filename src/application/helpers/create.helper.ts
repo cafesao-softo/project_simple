@@ -1,13 +1,13 @@
-import { UUIDManager } from "src/domain/cryptos/uuid"
-import { CreateDTO } from "src/domain/dto/create.dto"
+import { IUUID } from "src/domain/cryptos/uuid"
+import { ICreateDTO } from "src/domain/dto/create.dto"
 import { CityMapper } from "src/infra/repositories/typeorm/mapper/city.mapper"
 import { DistrictMapper } from "src/infra/repositories/typeorm/mapper/district.mapper"
 import { StateMapper } from "src/infra/repositories/typeorm/mapper/state.mapper"
 
 export class CreateHelper {
   constructor(
-    private readonly body: CreateDTO,
-    private readonly uuidManager: UUIDManager
+    private readonly body: ICreateDTO,
+    private readonly uuidManager: IUUID
   ) {}
 
   public state() {

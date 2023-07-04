@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { IsNotEmpty, IsString } from "class-validator"
 
-export class UpdateCityBodyDTO {
+export class IUpdateCityBodyDTO {
   @ApiProperty({
     example: "Navegantes"
   })
@@ -10,7 +10,7 @@ export class UpdateCityBodyDTO {
   name: string
 }
 
-export class UpdateCityParamsDTO {
+export class IUpdateCityParamsDTO {
   @ApiProperty({
     example: 1
   })

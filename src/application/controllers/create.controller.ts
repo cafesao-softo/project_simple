@@ -1,6 +1,5 @@
 import { Body, Controller, Post } from "@nestjs/common"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
-import { CreateDTO } from "src/domain/dto/create.dto"
 import { transformLowercaseBodyCreate } from "src/domain/pipes/transformLowercaseBodyCreate.pipe"
 import { CreateHelper } from "../helpers/create.helper"
 import { SyncHelper } from "../helpers/sync.helper"
@@ -8,6 +7,7 @@ import { CreateRepository } from "src/infra/repositories/typeorm/create.reposito
 import { ReadStateWithNameRepository } from "src/infra/repositories/typeorm/read-state-with-name.repository"
 import { ReadCityWithStateRepository } from "src/infra/repositories/typeorm/read-city-with-state.repository"
 import { UUIDAdapter } from "src/infra/cryptos/uuid"
+import { ICreateDTO } from "src/domain/dto/create.dto"
 
 @ApiTags("Create")
 @Controller()
@@ -23,7 +23,7 @@ export class CreateController {
   @ApiOperation({
     description: "Create new state/city/district"
   })
-  async create(@Body(transformLowercaseBodyCreate) body: CreateDTO) {
+  async create(@Body(transformLowercaseBodyCreate) body: ICreateDTO) {
     const createHelper = new CreateHelper(body, this.uuidManager)
     const syncHelper = new SyncHelper(this.createRepository)
     const isState = await this.readStateWithNameRepository.execute({
