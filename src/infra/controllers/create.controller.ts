@@ -42,7 +42,6 @@ export class CreateController {
       return true
     } else if (isState) {
       const city = await this.createCityCommand.execute({
-        id: isCity.getState().id,
         name: body.state.city.name,
         stateId: isState.getState().id
       })

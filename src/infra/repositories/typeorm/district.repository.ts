@@ -12,12 +12,15 @@ export class DistrictRepository implements IDistrictRepository {
     const repository = this.connection.getRepository(DistrictMapper)
     await repository.save({
       id: data.getState().id,
+      name: data.getState().name,
       cityId: data.getState().cityId
     })
     return true
   }
 
-  async findOne(data: IDistrictRepository.FindOne): Promise<DistrictEntity> {
+  async findOne(
+    data: IDistrictRepository.FindOne
+  ): Promise<DistrictEntity | false> {
     const repository = this.connection.getRepository(DistrictMapper)
     const fetch = await repository.findOne({
       where: { id: data.id },

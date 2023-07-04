@@ -11,12 +11,13 @@ export class StateRepository implements IStateRepository {
   async create(data: StateEntity): Promise<boolean> {
     const repository = this.connection.getRepository(StateMapper)
     await repository.save({
-      id: data.getState().id
+      id: data.getState().id,
+      name: data.getState().name
     })
     return true
   }
 
-  async findOne(data: IStateRepository.FindOne): Promise<StateEntity> {
+  async findOne(data: IStateRepository.FindOne): Promise<StateEntity | false> {
     const repository = this.connection.getRepository(StateMapper)
     const fetch = await repository.findOne({
       where: { id: data.id },
@@ -49,14 +50,18 @@ export class StateRepository implements IStateRepository {
 
   async findWithName(
     params: IStateRepository.FindWithName
-  ): Promise<StateEntity> {
+  ): Promise<StateEntity | false> {
     const repository = this.connection.getRepository(StateMapper)
     const fetch = await repository.findOne({
       where: { name: params.name },
       relations: {
-        cities: true
+        cities: {
+          districts: true
+        }
       }
     })
+
+    if (!fetch) return false
 
     return new StateEntity({
       id: fetch.id,

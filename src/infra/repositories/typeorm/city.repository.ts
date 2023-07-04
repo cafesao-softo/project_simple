@@ -12,12 +12,13 @@ export class CityRepository implements ICityRepository {
     const repository = this.connection.getRepository(CityMapper)
     await repository.save({
       id: data.getState().id,
+      name: data.getState().name,
       stateId: data.getState().stateId
     })
     return true
   }
 
-  async findOne(data: ICityRepository.FindOne): Promise<CityEntity> {
+  async findOne(data: ICityRepository.FindOne): Promise<CityEntity | false> {
     const repository = this.connection.getRepository(CityMapper)
     const fetch = await repository.findOne({
       where: { id: data.id },
@@ -44,7 +45,7 @@ export class CityRepository implements ICityRepository {
 
   async findWithNameAndState(
     params: ICityRepository.FindWithNameAndState
-  ): Promise<CityEntity> {
+  ): Promise<CityEntity | false> {
     const repository = this.connection.getRepository(CityMapper)
     const fetch = await repository.findOne({
       where: { name: params.cityName, state: { name: params.stateName } },
@@ -53,6 +54,8 @@ export class CityRepository implements ICityRepository {
         state: true
       }
     })
+
+    if (!fetch) return false
 
     return new CityEntity({
       id: fetch.id,

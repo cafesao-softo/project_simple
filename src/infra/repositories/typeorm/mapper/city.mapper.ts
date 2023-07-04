@@ -10,6 +10,9 @@ export class CityMapper {
   @Column()
   name: string
 
+  @Column()
+  stateId: string
+
   @ManyToOne(() => StateMapper, (State) => State.cities, {
     onDelete: "CASCADE"
   })

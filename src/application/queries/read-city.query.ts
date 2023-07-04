@@ -1,15 +1,15 @@
 import { Inject, Injectable } from "@nestjs/common"
-import { IReadCityParamsDTO } from "src/domain/dto/read-city.dto"
 import { CityEntity } from "src/domain/entities/city.entity"
 import { ICityRepository } from "src/domain/repositories/city.repository"
+import { IReadCityQuery } from "./contracts/read-city.query"
 
 @Injectable()
-export class ReadCityQuery {
+export class ReadCityQuery implements IReadCityQuery {
   constructor(
     @Inject("CityRepository") private readonly cityRepository: ICityRepository
   ) {}
 
-  async execute(params: IReadCityParamsDTO) {
+  async execute(params: ReadCityQuery.Params) {
     const data = await this.cityRepository.findOne({
       id: params.id
     })
