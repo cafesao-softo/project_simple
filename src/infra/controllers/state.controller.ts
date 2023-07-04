@@ -1,6 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Put } from "@nestjs/common"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
-import { transformLowercase } from "src/domain/pipes/transformLowercase.pipe"
 import { StateEntity } from "src/domain/entities/state.entity"
 import { IReadStateParamsDTO } from "src/domain/dto/read-state.dto"
 import {
@@ -8,9 +7,10 @@ import {
   IUpdateStateParamsDTO
 } from "src/domain/dto/update-state.dto"
 import { IDeleteStateParamsDTO } from "src/domain/dto/delete-state.dto"
-import { ReadStateQuery } from "../queries/read-state.query"
-import { UpdateStateCommand } from "../commands/update-state.command"
-import { DeleteStateCommand } from "../commands/delete-state.command"
+import { ReadStateQuery } from "../../application/queries/read-state.query"
+import { UpdateStateCommand } from "../../application/commands/update-state.command"
+import { DeleteStateCommand } from "../../application/commands/delete-state.command"
+import { transformLowercase } from "src/infra/pipes/transformLowercase.pipe"
 
 @ApiTags("States")
 @Controller("states")
@@ -37,9 +37,12 @@ export class StateController {
   })
   async update(
     @Body() body: IUpdateStateBodyDTO,
-    @Param(transformLowercase) params: IUpdateStateParamsDTO
+    @Param(transformLowercase) query: IUpdateStateParamsDTO
   ) {
-    return await this.updateStateCommand.execute(params, body)
+    return await this.updateStateCommand.execute({
+      query,
+      body
+    })
   }
 
   @Delete("/:id")

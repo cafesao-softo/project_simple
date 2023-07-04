@@ -9,7 +9,7 @@ export class DistrictMapper {
   @Column()
   name: string
 
-  @ManyToOne(() => CityMapper, (City) => City.district, {
+  @ManyToOne(() => CityMapper, (City) => City.districts, {
     onDelete: "CASCADE"
   })
   @JoinColumn()

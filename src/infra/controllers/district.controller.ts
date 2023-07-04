@@ -1,16 +1,16 @@
 import { Body, Controller, Delete, Get, Param, Put } from "@nestjs/common"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
-import { transformLowercase } from "src/domain/pipes/transformLowercase.pipe"
-import { StateEntity } from "src/domain/entities/state.entity"
 import { IReadDistrictParamsDTO } from "src/domain/dto/read-district.dto"
 import {
   IUpdateDistrictBodyDTO,
   IUpdateDistrictParamsDTO
 } from "src/domain/dto/update-district.dto"
 import { IDeleteDistrictParamsDTO } from "src/domain/dto/delete-district.dto"
-import { ReadDistrictQuery } from "../queries/read-district.query"
-import { UpdateDistrictCommand } from "../commands/update-district.command"
-import { DeleteDistrictCommand } from "../commands/delete-district.command"
+import { ReadDistrictQuery } from "../../application/queries/read-district.query"
+import { UpdateDistrictCommand } from "../../application/commands/update-district.command"
+import { DeleteDistrictCommand } from "../../application/commands/delete-district.command"
+import { DistrictEntity } from "src/domain/entities/district.entity"
+import { transformLowercase } from "src/infra/pipes/transformLowercase.pipe"
 
 @ApiTags("Districts")
 @Controller("districts")
@@ -27,7 +27,7 @@ export class DistrictController {
   })
   async read(
     @Param(transformLowercase) params: IReadDistrictParamsDTO
-  ): Promise<StateEntity | boolean> {
+  ): Promise<DistrictEntity | boolean> {
     return await this.readDistrictQuery.execute(params)
   }
 
@@ -37,9 +37,12 @@ export class DistrictController {
   })
   async update(
     @Body() body: IUpdateDistrictBodyDTO,
-    @Param(transformLowercase) params: IUpdateDistrictParamsDTO
+    @Param(transformLowercase) query: IUpdateDistrictParamsDTO
   ) {
-    return await this.updateDistrictCommand.execute(params, body)
+    return await this.updateDistrictCommand.execute({
+      query,
+      body
+    })
   }
 
   @Delete("/:id")

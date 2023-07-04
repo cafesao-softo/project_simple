@@ -1,16 +1,19 @@
-import { Injectable } from "@nestjs/common"
-import { IDeleteCityParamsDTO } from "src/domain/dto/delete-city.dto"
+import { Inject, Injectable } from "@nestjs/common"
 import { CityEntity } from "src/domain/entities/city.entity"
-import { DeleteCityRepository } from "src/infra/repositories/typeorm/delete-city.repository"
+import { ICityRepository } from "src/domain/repositories/city.repository"
+import { IDeleteCityCommand } from "./contracts/delete-city.contracts"
 
 @Injectable()
-export class DeleteCityCommand {
-  constructor(private readonly deleteCityRepository: DeleteCityRepository) {}
+export class DeleteCityCommand implements IDeleteCityCommand {
+  constructor(
+    @Inject("CityRepository") private readonly cityRepository: ICityRepository
+  ) {}
 
-  async execute(params: IDeleteCityParamsDTO) {
-    await this.deleteCityRepository.execute({
+  async execute(params: DeleteCityCommand.Params) {
+    await this.cityRepository.delete({
       id: params.id
     })
+    return true
   }
 }
 

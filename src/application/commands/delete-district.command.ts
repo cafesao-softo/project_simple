@@ -1,18 +1,20 @@
-import { Injectable } from "@nestjs/common"
-import { IDeleteDistrictParamsDTO } from "src/domain/dto/delete-district.dto"
+import { Inject, Injectable } from "@nestjs/common"
 import { DistrictEntity } from "src/domain/entities/district.entity"
-import { DeleteDistrictRepository } from "src/infra/repositories/typeorm/delete-district.repository"
+import { IDistrictRepository } from "src/domain/repositories/district.repository"
+import { IDeleteDistrictCommand } from "./contracts/delete-district.contracts"
 
 @Injectable()
-export class DeleteDistrictCommand {
+export class DeleteDistrictCommand implements IDeleteDistrictCommand {
   constructor(
-    private readonly deleteDistrictRepository: DeleteDistrictRepository
+    @Inject("DistrictRepository")
+    private readonly districtRepository: IDistrictRepository
   ) {}
 
-  async execute(params: IDeleteDistrictParamsDTO) {
-    await this.deleteDistrictRepository.execute({
+  async execute(params: DeleteDistrictCommand.Params) {
+    await this.districtRepository.delete({
       id: params.id
     })
+    return true
   }
 }
 

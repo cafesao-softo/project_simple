@@ -1,24 +1,24 @@
-import { Injectable } from "@nestjs/common"
-import {
-  IUpdateCityBodyDTO,
-  IUpdateCityParamsDTO
-} from "src/domain/dto/update-city.dto"
+import { Inject, Injectable } from "@nestjs/common"
 import { CityEntity } from "src/domain/entities/city.entity"
-import { UpdateCityRepository } from "src/infra/repositories/typeorm/update-city.repository"
+import { ICityRepository } from "src/domain/repositories/city.repository"
+import { IUpdateCityCommand } from "./contracts/update-city.contracts"
 
 @Injectable()
-export class UpdateCityCommand {
-  constructor(private readonly updateCityRepository: UpdateCityRepository) {}
+export class UpdateCityCommand implements IUpdateCityCommand {
+  constructor(
+    @Inject("CityRepository") private readonly cityRepository: ICityRepository
+  ) {}
 
-  async execute(query: IUpdateCityParamsDTO, body: IUpdateCityBodyDTO) {
-    await this.updateCityRepository.execute(
+  async execute(params: UpdateCityCommand.Params) {
+    await this.cityRepository.update(
       {
-        id: query.id
+        id: params.query.id
       },
       {
-        name: body.name
+        name: params.body.name
       }
     )
+    return true
   }
 }
 

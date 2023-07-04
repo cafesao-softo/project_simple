@@ -10,7 +10,7 @@ export class CityMapper {
   @Column()
   name: string
 
-  @ManyToOne(() => StateMapper, (State) => State.city, {
+  @ManyToOne(() => StateMapper, (State) => State.cities, {
     onDelete: "CASCADE"
   })
   state?: StateMapper
@@ -19,5 +19,5 @@ export class CityMapper {
     cascade: true,
     onDelete: "CASCADE"
   })
-  district?: DistrictMapper[]
+  districts?: DistrictMapper[]
 }

@@ -3,7 +3,8 @@ import { DistrictEntity } from "./district.entity"
 export class CityEntity {
   private id = ""
   private name = ""
-  private districts: DistrictEntity[]
+  private stateId = ""
+  private districts: DistrictEntity.Create[]
 
   constructor(params?: Partial<CityEntity.Params>) {
     Object.assign(this, params)
@@ -16,6 +17,7 @@ export class CityEntity {
     this.id = params.id
     this.name = params.name
     this.districts = params.districts
+    this.stateId = params.stateId
     return this
   }
 
@@ -23,7 +25,8 @@ export class CityEntity {
     return {
       id: this.id,
       name: this.name,
-      districts: this.districts
+      districts: this.districts,
+      stateId: this.stateId
     }
   }
 }
@@ -32,13 +35,15 @@ export namespace CityEntity {
   export type Params = {
     id: string
     name: string
-    districts: DistrictEntity[]
+    stateId?: string
+    districts: DistrictEntity.Create[]
   }
 
   export type Create = {
     id: string
     name: string
-    districts: DistrictEntity[]
+    stateId?: string
+    districts: DistrictEntity.Create[]
   }
 
   export type Read = {

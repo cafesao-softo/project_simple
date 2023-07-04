@@ -1,16 +1,16 @@
 import { Body, Controller, Delete, Get, Param, Put } from "@nestjs/common"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
-import { transformLowercase } from "src/domain/pipes/transformLowercase.pipe"
-import { DeleteCityCommand } from "../commands/delete-city.command"
-import { StateEntity } from "src/domain/entities/state.entity"
+import { DeleteCityCommand } from "../../application/commands/delete-city.command"
 import { IReadCityParamsDTO } from "src/domain/dto/read-city.dto"
 import {
   IUpdateCityBodyDTO,
   IUpdateCityParamsDTO
 } from "src/domain/dto/update-city.dto"
 import { IDeleteCityParamsDTO } from "src/domain/dto/delete-city.dto"
-import { ReadCityQuery } from "../queries/read-city.query"
-import { UpdateCityCommand } from "../commands/update-city.command"
+import { ReadCityQuery } from "../../application/queries/read-city.query"
+import { UpdateCityCommand } from "../../application/commands/update-city.command"
+import { CityEntity } from "src/domain/entities/city.entity"
+import { transformLowercase } from "src/infra/pipes/transformLowercase.pipe"
 
 @ApiTags("Cities")
 @Controller("cities")
@@ -27,7 +27,7 @@ export class CityController {
   })
   async read(
     @Param(transformLowercase) params: IReadCityParamsDTO
-  ): Promise<StateEntity | boolean> {
+  ): Promise<CityEntity | boolean> {
     return await this.readCityQuery.execute(params)
   }
 
@@ -37,9 +37,12 @@ export class CityController {
   })
   async update(
     @Body() body: IUpdateCityBodyDTO,
-    @Param(transformLowercase) params: IUpdateCityParamsDTO
+    @Param(transformLowercase) query: IUpdateCityParamsDTO
   ) {
-    return await this.updateCityCommand.execute(params, body)
+    return await this.updateCityCommand.execute({
+      query,
+      body
+    })
   }
 
   @Delete("/:id")

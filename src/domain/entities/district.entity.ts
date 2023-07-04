@@ -1,6 +1,7 @@
 export class DistrictEntity {
   private id = ""
   private name = ""
+  private cityId = ""
 
   constructor(params?: DistrictEntity.Params) {
     Object.assign(this, params)
@@ -17,7 +18,8 @@ export class DistrictEntity {
   getState(): DistrictEntity.State {
     return {
       id: this.id,
-      name: this.name
+      name: this.name,
+      cityId: this.cityId
     }
   }
 }
@@ -26,11 +28,13 @@ export namespace DistrictEntity {
   export type Params = {
     id: string
     name: string
+    cityId?: string
   }
 
   export type Create = {
     id: string
     name: string
+    cityId?: string
   }
 
   export type Read = {

@@ -3,7 +3,7 @@ import { CityEntity } from "./city.entity"
 export class StateEntity {
   private id = ""
   private name = ""
-  private cities: CityEntity[] | CityEntity
+  private cities: CityEntity[]
 
   constructor(params?: Partial<StateEntity.Params>) {
     Object.assign(this, params)
@@ -19,7 +19,7 @@ export class StateEntity {
     return this
   }
 
-  getState(): StateEntity.State {
+  getState(): StateEntity.Create {
     return {
       id: this.id,
       name: this.name,
@@ -32,13 +32,13 @@ export namespace StateEntity {
   export type Params = {
     id: string
     name: string
-    cities: CityEntity[] | CityEntity
+    cities: CityEntity.Create[]
   }
 
   export type Create = {
     id: string
     name: string
-    cities: CityEntity[] | CityEntity
+    cities: CityEntity[]
   }
 
   export type Read = {
@@ -55,6 +55,4 @@ export namespace StateEntity {
   export type Delete = {
     id: string
   }
-
-  export type State = Params
 }
