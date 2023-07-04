@@ -17,9 +17,9 @@ import { UUIDAdapter } from "../cryptos/uuid"
       useClass: DistrictRepository
     },
     { provide: "UUIDAdapter", useClass: UUIDAdapter },
-    ReadDistrictQuery,
-    UpdateDistrictCommand,
-    DeleteDistrictCommand
+    { provide: "ReadDistrictQuery", useClass: ReadDistrictQuery },
+    { provide: "UpdateDistrictCommand", useClass: UpdateDistrictCommand },
+    { provide: "DeleteDistrictCommand", useClass: DeleteDistrictCommand }
   ],
   exports: [
     {
@@ -27,9 +27,9 @@ import { UUIDAdapter } from "../cryptos/uuid"
       useClass: DistrictRepository
     },
     { provide: "UUIDAdapter", useClass: UUIDAdapter },
-    ReadDistrictQuery,
-    UpdateDistrictCommand,
-    DeleteDistrictCommand
+    { provide: "ReadDistrictQuery", useClass: ReadDistrictQuery },
+    { provide: "UpdateDistrictCommand", useClass: UpdateDistrictCommand },
+    { provide: "DeleteDistrictCommand", useClass: DeleteDistrictCommand }
   ]
 })
 export class DistrictModule {}

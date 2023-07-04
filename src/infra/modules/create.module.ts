@@ -19,9 +19,9 @@ import { CreateDistrictCommand } from "src/application/commands/create-district.
     { provide: "CityRepository", useClass: CityRepository },
     { provide: "DistrictRepository", useClass: DistrictRepository },
     { provide: "UUIDAdapter", useClass: UUIDAdapter },
-    CreateStateCommand,
-    CreateCityCommand,
-    CreateDistrictCommand
+    { provide: "CreateStateCommand", useClass: CreateStateCommand },
+    { provide: "CreateCityCommand", useClass: CreateCityCommand },
+    { provide: "CreateDistrictCommand", useClass: CreateDistrictCommand }
   ]
 })
 export class CreateModule {}

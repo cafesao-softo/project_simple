@@ -4,9 +4,9 @@ import { ICreateDTO } from "src/domain/dto/create.dto"
 import { IStateRepository } from "src/domain/repositories/state.repository"
 import { ICityRepository } from "src/domain/repositories/city.repository"
 import { transformLowercaseBodyCreate } from "src/infra/pipes/transformLowercaseBodyCreate.pipe"
-import { CreateStateCommand } from "../../application/commands/create-state.command"
-import { CreateCityCommand } from "../../application/commands/create-city.command"
-import { CreateDistrictCommand } from "../../application/commands/create-district.command"
+import { ICreateStateCommand } from "src/application/commands/contracts/create-state.contracts"
+import { ICreateCityCommand } from "src/application/commands/contracts/create-city.contracts"
+import { ICreateDistrictCommand } from "src/application/commands/contracts/create-district.contracts"
 
 @ApiTags("Create")
 @Controller()
@@ -16,9 +16,12 @@ export class CreateController {
     private readonly stateRepository: IStateRepository,
     @Inject("CityRepository")
     private readonly cityRepository: ICityRepository,
-    private readonly createStateCommand: CreateStateCommand,
-    private readonly createCityCommand: CreateCityCommand,
-    private readonly createDistrictCommand: CreateDistrictCommand
+    @Inject("CreateStateCommand")
+    private readonly createStateCommand: ICreateStateCommand,
+    @Inject("CreateCityCommand")
+    private readonly createCityCommand: ICreateCityCommand,
+    @Inject("CreateDistrictCommand")
+    private readonly createDistrictCommand: ICreateDistrictCommand
   ) {}
 
   @Post()

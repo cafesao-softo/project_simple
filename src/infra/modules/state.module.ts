@@ -7,6 +7,7 @@ import { UpdateStateCommand } from "src/application/commands/update-state.comman
 import { DeleteStateCommand } from "src/application/commands/delete-state.command"
 import { StateRepository } from "../repositories/typeorm/state.repository"
 import { UUIDAdapter } from "../cryptos/uuid"
+import { ReadAllStateQuery } from "src/application/queries/read-all-state.query"
 @Module({
   imports: [TypeOrmModule.forFeature([StateMapper])],
   providers: [
@@ -15,9 +16,22 @@ import { UUIDAdapter } from "../cryptos/uuid"
       useClass: StateRepository
     },
     { provide: "UUIDAdapter", useClass: UUIDAdapter },
-    UpdateStateCommand,
-    DeleteStateCommand,
-    ReadStateQuery
+    {
+      provide: "UpdateStateCommand",
+      useClass: UpdateStateCommand
+    },
+    {
+      provide: "DeleteStateCommand",
+      useClass: DeleteStateCommand
+    },
+    {
+      provide: "ReadAllStateQuery",
+      useClass: ReadAllStateQuery
+    },
+    {
+      provide: "ReadStateQuery",
+      useClass: ReadStateQuery
+    }
   ],
   controllers: [StateController],
   exports: [
@@ -26,9 +40,22 @@ import { UUIDAdapter } from "../cryptos/uuid"
       useClass: StateRepository
     },
     { provide: "UUIDAdapter", useClass: UUIDAdapter },
-    UpdateStateCommand,
-    DeleteStateCommand,
-    ReadStateQuery
+    {
+      provide: "UpdateStateCommand",
+      useClass: UpdateStateCommand
+    },
+    {
+      provide: "DeleteStateCommand",
+      useClass: DeleteStateCommand
+    },
+    {
+      provide: "ReadAllStateQuery",
+      useClass: ReadAllStateQuery
+    },
+    {
+      provide: "ReadStateQuery",
+      useClass: ReadStateQuery
+    }
   ]
 })
 export class StateModule {}

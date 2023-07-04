@@ -1,24 +1,35 @@
-import { Body, Controller, Delete, Get, Param, Put } from "@nestjs/common"
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Inject,
+  Param,
+  Put
+} from "@nestjs/common"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
-import { DeleteCityCommand } from "../../application/commands/delete-city.command"
 import { IReadCityParamsDTO } from "src/domain/dto/read-city.dto"
 import {
   IUpdateCityBodyDTO,
   IUpdateCityParamsDTO
 } from "src/domain/dto/update-city.dto"
 import { IDeleteCityParamsDTO } from "src/domain/dto/delete-city.dto"
-import { ReadCityQuery } from "../../application/queries/read-city.query"
-import { UpdateCityCommand } from "../../application/commands/update-city.command"
 import { CityEntity } from "src/domain/entities/city.entity"
 import { transformLowercase } from "src/infra/pipes/transformLowercase.pipe"
+import { IReadCityQuery } from "src/application/queries/contracts/read-city.query"
+import { IUpdateCityCommand } from "src/application/commands/contracts/update-city.contracts"
+import { IDeleteCityCommand } from "src/application/commands/contracts/delete-city.contracts"
 
 @ApiTags("Cities")
 @Controller("cities")
 export class CityController {
   constructor(
-    private readonly readCityQuery: ReadCityQuery,
-    private readonly updateCityCommand: UpdateCityCommand,
-    private readonly deleteCityCommand: DeleteCityCommand
+    @Inject("ReadCityQuery")
+    private readonly readCityQuery: IReadCityQuery,
+    @Inject("UpdateCityCommand")
+    private readonly updateCityCommand: IUpdateCityCommand,
+    @Inject("DeleteCityCommand")
+    private readonly deleteCityCommand: IDeleteCityCommand
   ) {}
 
   @Get("/:id")

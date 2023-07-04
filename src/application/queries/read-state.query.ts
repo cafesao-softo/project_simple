@@ -1,5 +1,4 @@
 import { Inject, Injectable } from "@nestjs/common"
-import { IReadStateParamsDTO } from "src/domain/dto/read-state.dto"
 import { StateEntity } from "src/domain/entities/state.entity"
 import { IStateRepository } from "src/domain/repositories/state.repository"
 
@@ -10,7 +9,7 @@ export class ReadStateQuery {
     private readonly stateRepository: IStateRepository
   ) {}
 
-  async execute(params: IReadStateParamsDTO) {
+  async execute(params: ReadStateQuery.Params) {
     const data = await this.stateRepository.findOne({
       id: params.id
     })

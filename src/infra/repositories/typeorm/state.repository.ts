@@ -81,6 +81,39 @@ export class StateRepository implements IStateRepository {
     })
   }
 
+  async findAll(): Promise<StateEntity[]> {
+    const repository = this.connection.getRepository(StateMapper)
+    const fetch = await repository.find({
+      relations: {
+        cities: {
+          districts: true
+        }
+      }
+    })
+
+    if (!fetch) return [new StateEntity()]
+
+    return fetch.map(
+      (state) =>
+        new StateEntity({
+          id: state.id,
+          name: state.name,
+          cities: state.cities.map((city) => {
+            return {
+              id: city.id,
+              name: city.name,
+              districts: city.districts.map((district) => {
+                return {
+                  id: district.id,
+                  name: district.name
+                }
+              })
+            }
+          })
+        })
+    )
+  }
+
   async update(
     query: IStateRepository.UpdateQuery,
     body: IStateRepository.UpdateBody

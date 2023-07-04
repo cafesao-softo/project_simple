@@ -17,9 +17,18 @@ import { UUIDAdapter } from "../cryptos/uuid"
       useClass: CityRepository
     },
     { provide: "UUIDAdapter", useClass: UUIDAdapter },
-    ReadCityQuery,
-    UpdateCityCommand,
-    DeleteCityCommand
+    {
+      provide: "ReadCityQuery",
+      useClass: ReadCityQuery
+    },
+    {
+      provide: "UpdateCityCommand",
+      useClass: UpdateCityCommand
+    },
+    {
+      provide: "DeleteCityCommand",
+      useClass: DeleteCityCommand
+    }
   ],
   exports: [
     {
@@ -27,9 +36,18 @@ import { UUIDAdapter } from "../cryptos/uuid"
       useClass: CityRepository
     },
     { provide: "UUIDAdapter", useClass: UUIDAdapter },
-    ReadCityQuery,
-    UpdateCityCommand,
-    DeleteCityCommand
+    {
+      provide: "ReadCityQuery",
+      useClass: ReadCityQuery
+    },
+    {
+      provide: "UpdateCityCommand",
+      useClass: UpdateCityCommand
+    },
+    {
+      provide: "DeleteCityCommand",
+      useClass: DeleteCityCommand
+    }
   ]
 })
 export class CityModule {}

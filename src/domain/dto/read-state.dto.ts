@@ -7,10 +7,10 @@ export class IReadStateParamsDTO {
   })
   @IsString()
   @IsNotEmpty()
-  id?: string
+  id: string
 }
 
 export class IReadStateServiceDTO {
-  id?: string
+  id: string
   stateName?: string
 }

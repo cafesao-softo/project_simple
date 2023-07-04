@@ -6,6 +6,7 @@ export interface IStateRepository {
   findWithName(
     params: IStateRepository.FindWithName
   ): Promise<StateEntity | false>
+  findAll(): Promise<StateEntity[]>
   update(
     query: IStateRepository.UpdateQuery,
     body: IStateRepository.UpdateBody
