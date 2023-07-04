@@ -38,7 +38,7 @@ export namespace CityEntity {
   export type Create = {
     id: string
     name: string
-    districts: DistrictEntity[]
+    districts: DistrictEntity.Create[]
   }
 
   export type Read = {

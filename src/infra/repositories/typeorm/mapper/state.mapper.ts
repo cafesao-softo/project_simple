@@ -14,5 +14,5 @@ export class StateMapper {
   @OneToMany(() => CityMapper, (City) => City.state, {
     onDelete: "CASCADE"
   })
-  city?: CityMapper[]
+  cities: CityMapper[]
 }

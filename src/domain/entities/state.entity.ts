@@ -1,12 +1,24 @@
 import { CityEntity } from "./city.entity"
 
+const state = new StateEntity();
+
+state.exists()
+
 export class StateEntity {
-  private id = ""
-  private name = ""
-  private cities: CityEntity[] | CityEntity
+  private id
+  private name
+  private cities: CityEntity[]
 
   constructor(params?: Partial<StateEntity.Params>) {
     Object.assign(this, params)
+  }
+
+  exists(): boolean {
+    return !!this.id
+  }
+
+  existsOrFail(): boolean {
+    if(!this.exists()) throw new Error("Nao existe")
   }
 
   create(params: StateEntity.Create) {
@@ -32,13 +44,13 @@ export namespace StateEntity {
   export type Params = {
     id: string
     name: string
-    cities: CityEntity[] | CityEntity
+    cities: CityEntity[]
   }
 
   export type Create = {
     id: string
     name: string
-    cities: CityEntity[] | CityEntity
+    cities: CityEntity.Create[]
   }
 
   export type Read = {
