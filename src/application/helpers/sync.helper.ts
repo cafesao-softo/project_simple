@@ -1,20 +1,20 @@
-import { State } from "src/state/state.entity"
-import { CreateService } from "../../infra/repositories/create.service"
-import { City } from "src/city/city.entity"
-import { District } from "src/district/district.entity"
+import { ICreateRepositoy } from "src/domain/repositories/create.repository"
+import { CityMapper } from "src/infra/repositories/typeorm/mapper/city.mapper"
+import { DistrictMapper } from "src/infra/repositories/typeorm/mapper/district.mapper"
+import { StateMapper } from "src/infra/repositories/typeorm/mapper/state.mapper"
 
 export class SyncHelper {
-  constructor(private readonly createService: CreateService) {}
+  constructor(private readonly createRepository: ICreateRepositoy) {}
 
-  public async state(state: State) {
-    await this.createService.execute(state)
+  public async state(state: StateMapper) {
+    await this.createRepository.execute(state)
   }
 
-  public async city(city: City) {
-    await this.createService.execute(city)
+  public async city(city: CityMapper) {
+    await this.createRepository.execute(city)
   }
 
-  public async district(district: District) {
-    await this.createService.execute(district)
+  public async district(district: DistrictMapper) {
+    await this.createRepository.execute(district)
   }
 }

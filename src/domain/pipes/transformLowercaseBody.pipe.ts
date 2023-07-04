@@ -1,5 +1,5 @@
 import { PipeTransform, Injectable, ArgumentMetadata } from "@nestjs/common"
-import { CreateDTO } from "src/create/dto/create.dto"
+import { CreateDTO } from "../dto/create.dto"
 
 @Injectable()
 export class transformLowercaseBody implements PipeTransform {

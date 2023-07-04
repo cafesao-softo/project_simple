@@ -1,13 +1,24 @@
 import { Body, Controller, Delete, Get, Param, Put } from "@nestjs/common"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
+import { ReadDistrictCommand } from "../commands/read-district.commands"
+import { UpdateDistrictCommand } from "../commands/update-district.commands"
+import { DeleteDistrictCommand } from "../commands/delete-district.commands"
+import { transformLowercase } from "src/domain/pipes/transformLowercase.pipe"
+import { ReadDistrictParamsDTO } from "src/domain/dto/read-district.dto"
+import {
+  UpdateDistrictBodyDTO,
+  UpdateDistrictParamsDTO
+} from "src/domain/dto/update-district.dto"
+import { DeleteDistrictParamsDTO } from "src/domain/dto/delete-district.dto"
+import { StateEntity } from "src/domain/entities/state.entity"
 
 @ApiTags("Districts")
 @Controller("districts")
 export class DistrictController {
   constructor(
-    private readonly readService: ReadDistrictService,
-    private readonly updateService: UpdateDistrictService,
-    private readonly deleteService: DeleteDistrictService
+    private readonly readDistrictCommand: ReadDistrictCommand,
+    private readonly updateDistrictCommand: UpdateDistrictCommand,
+    private readonly deleteDistrictCommand: DeleteDistrictCommand
   ) {}
 
   @Get("/:id")
@@ -16,8 +27,8 @@ export class DistrictController {
   })
   async read(
     @Param(transformLowercase) params: ReadDistrictParamsDTO
-  ): Promise<District> {
-    return await this.readService.execute(params, true)
+  ): Promise<StateEntity | boolean> {
+    return await this.readDistrictCommand.execute(params)
   }
 
   @Put("/:id")
@@ -28,7 +39,7 @@ export class DistrictController {
     @Body() body: UpdateDistrictBodyDTO,
     @Param(transformLowercase) params: UpdateDistrictParamsDTO
   ) {
-    return await this.updateService.execute(params, body)
+    return await this.updateDistrictCommand.execute(params, body)
   }
 
   @Delete("/:id")
@@ -36,6 +47,6 @@ export class DistrictController {
     description: "Delete district by name and city name"
   })
   async delete(@Param(transformLowercase) params: DeleteDistrictParamsDTO) {
-    return await this.deleteService.execute(params)
+    return await this.deleteDistrictCommand.execute(params)
   }
 }

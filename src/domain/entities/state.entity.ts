@@ -3,7 +3,7 @@ import { CityEntity } from "./city.entity"
 export class StateEntity {
   private id = ""
   private name = ""
-  private cities: CityEntity[] = []
+  private cities: CityEntity[] | CityEntity
 
   constructor(params?: Partial<StateEntity.Params>) {
     Object.assign(this, params)
@@ -12,8 +12,7 @@ export class StateEntity {
   create(params: StateEntity.Create) {
     if (!params.id || params.id === "") throw new Error("ID not empty")
     if (!params.name || params.name === "") throw new Error("Name not empty")
-    if (!params.cities || params.cities.length < 1)
-      throw new Error("City not empty")
+    if (!params.cities) throw new Error("City not empty")
     this.id = params.id
     this.name = params.name
     this.cities = params.cities
@@ -33,13 +32,13 @@ export namespace StateEntity {
   export type Params = {
     id: string
     name: string
-    cities: CityEntity[]
+    cities: CityEntity[] | CityEntity
   }
 
   export type Create = {
     id: string
     name: string
-    cities: CityEntity[]
+    cities: CityEntity[] | CityEntity
   }
 
   export type Read = {

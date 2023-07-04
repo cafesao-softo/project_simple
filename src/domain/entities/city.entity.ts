@@ -3,7 +3,7 @@ import { DistrictEntity } from "./district.entity"
 export class CityEntity {
   private id = ""
   private name = ""
-  private districts: DistrictEntity[] = []
+  private districts: DistrictEntity[]
 
   constructor(params?: Partial<CityEntity.Params>) {
     Object.assign(this, params)
@@ -12,8 +12,7 @@ export class CityEntity {
   create(params: CityEntity.Create) {
     if (!params.id || params.id === "") throw new Error("ID not empty")
     if (!params.name || params.name === "") throw new Error("Name not empty")
-    if (!params.districts || params.districts.length < 1)
-      throw new Error("Districts not empty")
+    if (!params.districts) throw new Error("Districts not empty")
     this.id = params.id
     this.name = params.name
     this.districts = params.districts

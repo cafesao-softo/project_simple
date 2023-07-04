@@ -1,7 +1,7 @@
-import { CityEntity } from "../entities/city.entity"
+import { CityMapper } from "src/infra/repositories/typeorm/mapper/city.mapper"
 
 export interface IReadCityRepository {
-  execute(params: IReadCityRepository.Params): Promise<CityEntity>
+  execute(params: IReadCityRepository.Params): Promise<CityMapper>
 }
 
 export namespace IReadCityRepository {

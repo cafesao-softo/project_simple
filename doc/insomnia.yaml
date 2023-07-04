@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2023-06-30T19:00:30.929Z
+__export_date: 2023-07-04T14:30:14.090Z
 __export_source: insomnia.desktop.app:v2023.3.0
 resources:
   - _id: req_f0b47850138b4b9cb1d3809e90717c40
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688145768529
+    modified: 1688481003840
     created: 1687893477450
     url: "{{ _.URL }}"
     name: Create
@@ -18,7 +18,7 @@ resources:
         	"state": {
         		"name": "SC",
         		"city": {
-        			"name": "São Francisco",
+        			"name": "Itajai",
         			"district": {
         				"name": "Centro"
         			}
@@ -49,9 +49,9 @@ resources:
     _type: workspace
   - _id: req_8b596590909044f887874f573a954730
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688151277811
+    modified: 1688480987636
     created: 1687893492509
-    url: "{{ _.URL }}/states/7"
+    url: "{{ _.URL }}/states/3052f2de-9b56-49c7-9c6b-c32e1e03d656"
     name: Read - State
     description: ""
     method: GET
@@ -70,9 +70,9 @@ resources:
     _type: request
   - _id: req_426a5eecdb2b445cb57e1a4200a01557
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688150409950
+    modified: 1688480909315
     created: 1687893502975
-    url: "{{ _.URL }}/cities/6"
+    url: "{{ _.URL }}/cities/0e8195b8-027e-45bc-a2e4-e541ad68a3d0"
     name: Read - City
     description: ""
     method: GET
@@ -91,9 +91,9 @@ resources:
     _type: request
   - _id: req_0eff59b3f5d3402cb8bbf99e549af3da
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688150412456
+    modified: 1688480880072
     created: 1687893507867
-    url: "{{ _.URL }}/districts/6"
+    url: "{{ _.URL }}/districts/1de3c7cf-f00f-47c4-8ec6-02fac04af39e"
     name: Read - District
     description: ""
     method: GET
@@ -112,9 +112,9 @@ resources:
     _type: request
   - _id: req_b8620f99c7ed48a395d9de65393122b9
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688151242961
+    modified: 1688480933118
     created: 1687893483981
-    url: "{{ _.URL }}/states/6"
+    url: "{{ _.URL }}/states/27e48071-cd62-4f4c-98bf-fdc0377cc11a"
     name: Update - State
     description: ""
     method: PUT
@@ -140,9 +140,9 @@ resources:
     _type: request
   - _id: req_fd7b2833dc8b4f9a9bcd4a8b5d04f71c
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688151244112
+    modified: 1688480941832
     created: 1687895216019
-    url: "{{ _.URL }}/cities/6"
+    url: "{{ _.URL }}/cities/08d7a148-bcb4-49a2-bd48-3959e41e9916"
     name: Update - City
     description: ""
     method: PUT
@@ -168,9 +168,9 @@ resources:
     _type: request
   - _id: req_9455d582494d4acba57c8784975854b9
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688151245292
+    modified: 1688480952610
     created: 1687895224297
-    url: "{{ _.URL }}/districts/6"
+    url: "{{ _.URL }}/districts/d29d167c-7222-4a60-90aa-126a2fd66721"
     name: Update - District
     description: ""
     method: PUT
@@ -196,9 +196,9 @@ resources:
     _type: request
   - _id: req_d2b2cb5c84354a8a8caee211b36c7ad7
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688151272593
+    modified: 1688480992317
     created: 1687893581271
-    url: "{{ _.URL }}/states/6"
+    url: "{{ _.URL }}/states/3052f2de-9b56-49c7-9c6b-c32e1e03d656"
     name: Delete - State
     description: ""
     method: DELETE
@@ -217,9 +217,9 @@ resources:
     _type: request
   - _id: req_af3ba89b436842ecbeab947622b7c3a4
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688151267350
+    modified: 1688480967643
     created: 1687893586922
-    url: "{{ _.URL }}/cities/6"
+    url: "{{ _.URL }}/cities/48683fb6-d44c-4586-882e-d6b509dbd93c"
     name: Delete - City
     description: ""
     method: DELETE
@@ -238,9 +238,9 @@ resources:
     _type: request
   - _id: req_f6311ceb831e4c3e863f23eaa6f2957c
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688151263587
+    modified: 1688480960244
     created: 1687893489337
-    url: "{{ _.URL }}/districts/6"
+    url: "{{ _.URL }}/districts/e9d06419-8514-4aa4-ab9b-904d5bcaf343"
     name: Delete - District
     description: ""
     method: DELETE

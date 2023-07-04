@@ -1,7 +1,7 @@
-import { DistrictEntity } from "../entities/district.entity"
+import { DistrictMapper } from "src/infra/repositories/typeorm/mapper/district.mapper"
 
 export interface IReadDistrictRepository {
-  execute(params: IReadDistrictRepository.Params): Promise<DistrictEntity>
+  execute(params: IReadDistrictRepository.Params): Promise<DistrictMapper>
 }
 
 export namespace IReadDistrictRepository {

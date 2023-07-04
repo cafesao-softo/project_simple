@@ -1,13 +1,24 @@
 import { Body, Controller, Delete, Get, Param, Put } from "@nestjs/common"
 import { ApiOperation, ApiTags } from "@nestjs/swagger"
+import { transformLowercase } from "src/domain/pipes/transformLowercase.pipe"
+import { ReadCityCommand } from "../commands/read-city.commands"
+import { UpdateCityCommand } from "../commands/update-city.commands"
+import { DeleteCityCommand } from "../commands/delete-city.command"
+import { StateEntity } from "src/domain/entities/state.entity"
+import {
+  UpdateCityBodyDTO,
+  UpdateCityParamsDTO
+} from "src/domain/dto/update-city.dto"
+import { ReadCityParamsDTO } from "src/domain/dto/read-city.dto"
+import { DeleteCityParamsDTO } from "src/domain/dto/delete-city.dto"
 
 @ApiTags("Cities")
 @Controller("cities")
 export class CityController {
   constructor(
-    private readonly readService: ReadCityService,
-    private readonly updateService: UpdateCityService,
-    private readonly deleteService: DeleteCityService
+    private readonly readCityCommand: ReadCityCommand,
+    private readonly updateCityCommand: UpdateCityCommand,
+    private readonly deleteCityCommand: DeleteCityCommand
   ) {}
 
   @Get("/:id")
@@ -16,8 +27,8 @@ export class CityController {
   })
   async read(
     @Param(transformLowercase) params: ReadCityParamsDTO
-  ): Promise<City> {
-    return await this.readService.execute(params, true)
+  ): Promise<StateEntity | boolean> {
+    return await this.readCityCommand.execute(params)
   }
 
   @Put("/:id")
@@ -28,7 +39,7 @@ export class CityController {
     @Body() body: UpdateCityBodyDTO,
     @Param(transformLowercase) params: UpdateCityParamsDTO
   ) {
-    return await this.updateService.execute(params, body)
+    return await this.updateCityCommand.execute(params, body)
   }
 
   @Delete("/:id")
@@ -36,6 +47,6 @@ export class CityController {
     description: "Delete a city by name and state name"
   })
   async delete(@Param(transformLowercase) params: DeleteCityParamsDTO) {
-    return await this.deleteService.execute(params)
+    return await this.deleteCityCommand.execute(params)
   }
 }
