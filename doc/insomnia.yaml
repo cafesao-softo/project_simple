@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2023-07-04T14:30:14.090Z
+__export_date: 2023-07-04T20:53:13.983Z
 __export_source: insomnia.desktop.app:v2023.3.0
 resources:
   - _id: req_f0b47850138b4b9cb1d3809e90717c40
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688481003840
+    modified: 1688503981875
     created: 1687893477450
     url: "{{ _.URL }}"
     name: Create
@@ -47,11 +47,32 @@ resources:
     description: ""
     scope: collection
     _type: workspace
+  - _id: req_3afe237c3cff4ebd975ea945d47e8562
+    parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
+    modified: 1688502895076
+    created: 1688502888940
+    url: "{{ _.URL }}/states"
+    name: Read - All State
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1687893490625.625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_8b596590909044f887874f573a954730
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688480987636
+    modified: 1688502916418
     created: 1687893492509
-    url: "{{ _.URL }}/states/3052f2de-9b56-49c7-9c6b-c32e1e03d656"
+    url: "{{ _.URL }}/states/9721289b-c947-40a2-b0a8-702db6571d0c"
     name: Read - State
     description: ""
     method: GET
@@ -70,9 +91,9 @@ resources:
     _type: request
   - _id: req_426a5eecdb2b445cb57e1a4200a01557
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688480909315
+    modified: 1688502922960
     created: 1687893502975
-    url: "{{ _.URL }}/cities/0e8195b8-027e-45bc-a2e4-e541ad68a3d0"
+    url: "{{ _.URL }}/cities/fe7821b4-fed6-4eb5-9c8d-56cb462534ea"
     name: Read - City
     description: ""
     method: GET
@@ -91,9 +112,9 @@ resources:
     _type: request
   - _id: req_0eff59b3f5d3402cb8bbf99e549af3da
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688480880072
+    modified: 1688502927679
     created: 1687893507867
-    url: "{{ _.URL }}/districts/1de3c7cf-f00f-47c4-8ec6-02fac04af39e"
+    url: "{{ _.URL }}/districts/e3375669-9b37-4f32-b2bd-6b0badf4c405"
     name: Read - District
     description: ""
     method: GET
@@ -112,9 +133,9 @@ resources:
     _type: request
   - _id: req_b8620f99c7ed48a395d9de65393122b9
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688480933118
+    modified: 1688500388013
     created: 1687893483981
-    url: "{{ _.URL }}/states/27e48071-cd62-4f4c-98bf-fdc0377cc11a"
+    url: "{{ _.URL }}/states/f6f24f9b-9ea8-4239-ac62-72cf6cae6ed5"
     name: Update - State
     description: ""
     method: PUT
@@ -140,9 +161,9 @@ resources:
     _type: request
   - _id: req_fd7b2833dc8b4f9a9bcd4a8b5d04f71c
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688480941832
+    modified: 1688500397529
     created: 1687895216019
-    url: "{{ _.URL }}/cities/08d7a148-bcb4-49a2-bd48-3959e41e9916"
+    url: "{{ _.URL }}/cities/44131d06-8167-46b6-b98b-6fddbfab5b36"
     name: Update - City
     description: ""
     method: PUT
@@ -168,9 +189,9 @@ resources:
     _type: request
   - _id: req_9455d582494d4acba57c8784975854b9
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688480952610
+    modified: 1688500406858
     created: 1687895224297
-    url: "{{ _.URL }}/districts/d29d167c-7222-4a60-90aa-126a2fd66721"
+    url: "{{ _.URL }}/districts/0d5ca102-78cd-4c1e-a3e1-e92048da9bf0"
     name: Update - District
     description: ""
     method: PUT
@@ -196,9 +217,9 @@ resources:
     _type: request
   - _id: req_d2b2cb5c84354a8a8caee211b36c7ad7
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688480992317
+    modified: 1688502882622
     created: 1687893581271
-    url: "{{ _.URL }}/states/3052f2de-9b56-49c7-9c6b-c32e1e03d656"
+    url: "{{ _.URL }}/states/0110c4f7-1b07-4af7-966c-7726cb8cd148"
     name: Delete - State
     description: ""
     method: DELETE
@@ -217,9 +238,9 @@ resources:
     _type: request
   - _id: req_af3ba89b436842ecbeab947622b7c3a4
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688480967643
+    modified: 1688500511527
     created: 1687893586922
-    url: "{{ _.URL }}/cities/48683fb6-d44c-4586-882e-d6b509dbd93c"
+    url: "{{ _.URL }}/cities/44131d06-8167-46b6-b98b-6fddbfab5b36"
     name: Delete - City
     description: ""
     method: DELETE
@@ -238,9 +259,9 @@ resources:
     _type: request
   - _id: req_f6311ceb831e4c3e863f23eaa6f2957c
     parentId: wrk_3fd07560ffd9474f83cc85a1d5e274d5
-    modified: 1688480960244
+    modified: 1688500482450
     created: 1687893489337
-    url: "{{ _.URL }}/districts/e9d06419-8514-4aa4-ab9b-904d5bcaf343"
+    url: "{{ _.URL }}/districts/44131d06-8167-46b6-b98b-6fddbfab5b36"
     name: Delete - District
     description: ""
     method: DELETE
