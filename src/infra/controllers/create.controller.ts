@@ -7,20 +7,21 @@ import { transformLowercaseBodyCreate } from "src/infra/pipes/transformLowercase
 import { ICreateStateCommand } from "src/application/commands/contracts/create-state.contracts"
 import { ICreateCityCommand } from "src/application/commands/contracts/create-city.contracts"
 import { ICreateDistrictCommand } from "src/application/commands/contracts/create-district.contracts"
+import { GeoProviderEnum } from "../ioc/constants/geo.const"
 
 @ApiTags("Create")
 @Controller()
 export class CreateController {
   constructor(
-    @Inject("StateRepository")
+    @Inject(GeoProviderEnum.StateRepository)
     private readonly stateRepository: IStateRepository,
-    @Inject("CityRepository")
+    @Inject(GeoProviderEnum.CityRepository)
     private readonly cityRepository: ICityRepository,
-    @Inject("CreateStateCommand")
+    @Inject(GeoProviderEnum.CreateStateCommand)
     private readonly createStateCommand: ICreateStateCommand,
-    @Inject("CreateCityCommand")
+    @Inject(GeoProviderEnum.CreateCityCommand)
     private readonly createCityCommand: ICreateCityCommand,
-    @Inject("CreateDistrictCommand")
+    @Inject(GeoProviderEnum.CreateDistrictCommand)
     private readonly createDistrictCommand: ICreateDistrictCommand
   ) {}
 
@@ -37,13 +38,17 @@ export class CreateController {
       stateName: body.state.name
     })
 
-    if (isState.getState().id !== "" && isCity.getState().id !== "") {
+    if (
+      isState.getState().id !== undefined &&
+      isCity.getState().id !== undefined
+    ) {
+      console.log("a")
       await this.createDistrictCommand.execute({
         name: body.state.city.name,
         cityId: isCity.getState().id
       })
       return true
-    } else if (isState.getState().id !== "") {
+    } else if (isState.getState().id !== undefined) {
       const city = await this.createCityCommand.execute({
         name: body.state.city.name,
         stateId: isState.getState().id

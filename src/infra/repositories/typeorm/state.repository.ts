@@ -83,7 +83,7 @@ export class StateRepository implements IStateRepository {
 
   async delete(data: IStateRepository.Delete): Promise<boolean> {
     const repository = this.connection.getRepository(StateMapper)
-    await repository.delete({ id: data.id })
+    await repository.save({ id: data.id, deletaAt: new Date() })
     return true
   }
 }

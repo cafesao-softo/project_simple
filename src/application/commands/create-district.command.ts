@@ -7,9 +7,7 @@ import { ICreateDistrictCommand } from "./contracts/create-district.contracts"
 @Injectable()
 export class CreateDistrictCommand implements ICreateDistrictCommand {
   constructor(
-    @Inject("DistrictRepository")
     private readonly districtRepository: IDistrictRepository,
-    @Inject("UUIDAdapter")
     private readonly uuidAdapter: IUUID
   ) {}
 

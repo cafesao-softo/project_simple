@@ -5,9 +5,7 @@ import { IUpdateCityCommand } from "./contracts/update-city.contracts"
 
 @Injectable()
 export class UpdateCityCommand implements IUpdateCityCommand {
-  constructor(
-    @Inject("CityRepository") private readonly cityRepository: ICityRepository
-  ) {}
+  constructor(private readonly cityRepository: ICityRepository) {}
 
   async execute(params: UpdateCityCommand.Params) {
     await this.cityRepository.update(

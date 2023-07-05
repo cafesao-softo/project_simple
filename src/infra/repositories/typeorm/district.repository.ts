@@ -48,7 +48,7 @@ export class DistrictRepository implements IDistrictRepository {
 
   async delete(data: IDistrictRepository.Delete): Promise<boolean> {
     const repository = this.connection.getRepository(DistrictMapper)
-    await repository.delete({ id: data.id })
+    await repository.save({ id: data.id, deletaAt: new Date() })
     return true
   }
 }

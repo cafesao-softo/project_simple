@@ -69,7 +69,7 @@ export class CityRepository implements ICityRepository {
 
   async delete(data: ICityRepository.Delete): Promise<boolean> {
     const repository = this.connection.getRepository(CityMapper)
-    await repository.delete({ id: data.id })
+    await repository.save({ id: data.id, deletaAt: new Date() })
     return true
   }
 }

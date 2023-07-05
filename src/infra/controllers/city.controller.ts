@@ -19,16 +19,17 @@ import { transformLowercase } from "src/infra/pipes/transformLowercase.pipe"
 import { IReadCityQuery } from "src/application/queries/contracts/read-city.query"
 import { IUpdateCityCommand } from "src/application/commands/contracts/update-city.contracts"
 import { IDeleteCityCommand } from "src/application/commands/contracts/delete-city.contracts"
+import { GeoProviderEnum } from "../ioc/constants/geo.const"
 
 @ApiTags("Cities")
 @Controller("cities")
 export class CityController {
   constructor(
-    @Inject("ReadCityQuery")
+    @Inject(GeoProviderEnum.ReadCityQuery)
     private readonly readCityQuery: IReadCityQuery,
-    @Inject("UpdateCityCommand")
+    @Inject(GeoProviderEnum.UpdateCityCommand)
     private readonly updateCityCommand: IUpdateCityCommand,
-    @Inject("DeleteCityCommand")
+    @Inject(GeoProviderEnum.DeleteCityCommand)
     private readonly deleteCityCommand: IDeleteCityCommand
   ) {}
 

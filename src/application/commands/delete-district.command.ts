@@ -5,10 +5,7 @@ import { IDeleteDistrictCommand } from "./contracts/delete-district.contracts"
 
 @Injectable()
 export class DeleteDistrictCommand implements IDeleteDistrictCommand {
-  constructor(
-    @Inject("DistrictRepository")
-    private readonly districtRepository: IDistrictRepository
-  ) {}
+  constructor(private readonly districtRepository: IDistrictRepository) {}
 
   async execute(params: DeleteDistrictCommand.Params) {
     await this.districtRepository.delete({

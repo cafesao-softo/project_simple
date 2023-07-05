@@ -5,10 +5,7 @@ import { IUpdateDistrictCommand } from "./contracts/update-district.contracts"
 
 @Injectable()
 export class UpdateDistrictCommand implements IUpdateDistrictCommand {
-  constructor(
-    @Inject("DistrictRepository")
-    private readonly districtRepository: IDistrictRepository
-  ) {}
+  constructor(private readonly districtRepository: IDistrictRepository) {}
 
   async execute(params: UpdateDistrictCommand.Params) {
     await this.districtRepository.update(

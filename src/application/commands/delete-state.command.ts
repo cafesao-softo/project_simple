@@ -5,10 +5,7 @@ import { IDeleteStateCommand } from "./contracts/delete-state.contracts"
 
 @Injectable()
 export class DeleteStateCommand implements IDeleteStateCommand {
-  constructor(
-    @Inject("StateRepository")
-    private readonly stateRepository: IStateRepository
-  ) {}
+  constructor(private readonly stateRepository: IStateRepository) {}
 
   async execute(params: DeleteStateCommand.Params) {
     await this.stateRepository.delete({

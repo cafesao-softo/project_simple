@@ -1,13 +1,10 @@
-import { Inject, Injectable } from "@nestjs/common"
+import { Injectable } from "@nestjs/common"
 import { StateEntity } from "src/domain/entities/state.entity"
 import { IStateRepository } from "src/domain/repositories/state.repository"
 
 @Injectable()
 export class ReadStateQuery {
-  constructor(
-    @Inject("StateRepository")
-    private readonly stateRepository: IStateRepository
-  ) {}
+  constructor(private readonly stateRepository: IStateRepository) {}
 
   async execute(params: ReadStateQuery.Params) {
     const data = await this.stateRepository.findOne({
