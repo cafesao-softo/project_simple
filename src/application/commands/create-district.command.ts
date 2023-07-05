@@ -19,7 +19,7 @@ export class CreateDistrictCommand implements ICreateDistrictCommand {
       name: params.name,
       cityId: params.cityId
     })
-    await this.districtRepository.create(entity)
+    await this.districtRepository.save(entity)
     return entity
   }
 }

@@ -1,4 +1,5 @@
 import { CityEntity } from "src/domain/entities/city.entity"
+import { DistrictEntity } from "src/domain/entities/district.entity"
 import { CityMapper } from "src/infra/repositories/typeorm/mapper/city.mapper"
 
 export class CityAssembler {
@@ -9,10 +10,10 @@ export class CityAssembler {
       name: input.name,
       stateId: input.state.id,
       districts: input.districts.map((district) => {
-        return {
+        return new DistrictEntity({
           id: district.id,
           name: district.name
-        }
+        })
       })
     })
   }

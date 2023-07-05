@@ -17,7 +17,7 @@ export class CreateCityCommand implements ICreateCityCommand {
       name: params.name,
       stateId: params.stateId
     })
-    await this.cityRepository.create(entity)
+    await this.cityRepository.save(entity)
     return entity
   }
 }

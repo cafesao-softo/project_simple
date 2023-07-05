@@ -1,7 +1,7 @@
 import { DistrictEntity } from "../entities/district.entity"
 
 export interface IDistrictRepository {
-  create(data: IDistrictRepository.Create): Promise<boolean>
+  save(data: IDistrictRepository.Create): Promise<boolean>
   findOne(data: IDistrictRepository.FindOne): Promise<DistrictEntity>
   update(
     query: IDistrictRepository.UpdateQuery,

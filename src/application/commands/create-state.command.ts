@@ -18,7 +18,7 @@ export class CreateStateCommand implements ICreateStateCommand {
       id: params.id ? params.id : this.uuidAdapter.generate(),
       name: params.name
     })
-    await this.stateRepository.create(entity)
+    await this.stateRepository.save(entity)
     return entity
   }
 }

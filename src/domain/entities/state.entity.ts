@@ -1,9 +1,10 @@
 import { CityEntity } from "./city.entity"
 
 export class StateEntity {
-  private id = ""
-  private name = ""
+  private id: string
+  private name: string
   private cities: CityEntity[]
+  private deleteAt: Date
 
   constructor(params?: Partial<StateEntity.Params>) {
     Object.assign(this, params)
@@ -26,13 +27,27 @@ export class StateEntity {
       cities: this.cities
     }
   }
+
+  exists(): boolean {
+    return !!this.id
+  }
+
+  existsOrFail() {
+    if (!this.exists()) {
+      throw new Error("Not exist")
+    }
+  }
+
+  delete() {
+    this.deleteAt = new Date()
+  }
 }
 
 export namespace StateEntity {
   export type Params = {
     id: string
     name: string
-    cities: CityEntity.Create[]
+    cities: CityEntity[]
   }
 
   export type Create = {

@@ -3,13 +3,13 @@ import { ICityRepository } from "src/domain/repositories/city.repository"
 import { CityMapper } from "./mapper/city.mapper"
 import { DataSource } from "typeorm"
 import { Injectable } from "@nestjs/common"
-import { CityAssembler } from "src/infra/repositories/typeorm/assembler/city.assembler"
+import { CityAssembler } from "src/domain/assembler/city.assembler"
 
 @Injectable()
 export class CityRepository implements ICityRepository {
   constructor(private readonly connection: DataSource) {}
 
-  async create(data: CityEntity): Promise<boolean> {
+  async save(data: CityEntity): Promise<boolean> {
     const repository = this.connection.getRepository(CityMapper)
 
     await repository.save({

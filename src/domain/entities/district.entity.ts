@@ -1,7 +1,8 @@
 export class DistrictEntity {
-  private id = ""
-  private name = ""
-  private cityId = ""
+  private id: string
+  private name: string
+  private cityId: string
+  private deleteAt: Date
 
   constructor(params?: DistrictEntity.Params) {
     Object.assign(this, params)
@@ -21,6 +22,20 @@ export class DistrictEntity {
       name: this.name,
       cityId: this.cityId
     }
+  }
+
+  exists(): boolean {
+    return !!this.id
+  }
+
+  existsOrFail() {
+    if (!this.exists()) {
+      throw new Error("Not exist")
+    }
+  }
+
+  delete() {
+    this.deleteAt = new Date()
   }
 }
 

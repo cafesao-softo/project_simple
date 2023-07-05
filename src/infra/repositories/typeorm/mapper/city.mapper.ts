@@ -1,4 +1,11 @@
-import { Entity, Column, OneToMany, ManyToOne, PrimaryColumn } from "typeorm"
+import {
+  Entity,
+  Column,
+  OneToMany,
+  ManyToOne,
+  PrimaryColumn,
+  DeleteDateColumn
+} from "typeorm"
 import { DistrictMapper } from "./district.mapper"
 import { StateMapper } from "./state.mapper"
 
@@ -12,6 +19,9 @@ export class CityMapper {
 
   @Column()
   stateId: string
+
+  @DeleteDateColumn()
+  deletaAt: Date
 
   @ManyToOne(() => StateMapper, (State) => State.cities, {
     onDelete: "CASCADE"

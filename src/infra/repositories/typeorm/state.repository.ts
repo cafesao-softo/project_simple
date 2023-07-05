@@ -3,13 +3,13 @@ import { IStateRepository } from "src/domain/repositories/state.repository"
 import { DataSource } from "typeorm"
 import { StateMapper } from "./mapper/state.mapper"
 import { Injectable } from "@nestjs/common"
-import { StateAssembler } from "./assembler/state.assembler"
+import { StateAssembler } from "../../../domain/assembler/state.assembler"
 
 @Injectable()
 export class StateRepository implements IStateRepository {
   constructor(private readonly connection: DataSource) {}
 
-  async create(data: StateEntity): Promise<boolean> {
+  async save(data: StateEntity): Promise<boolean> {
     const repository = this.connection.getRepository(StateMapper)
     await repository.save({
       id: data.getState().id,

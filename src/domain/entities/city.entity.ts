@@ -1,10 +1,11 @@
 import { DistrictEntity } from "./district.entity"
 
 export class CityEntity {
-  private id = ""
-  private name = ""
-  private stateId = ""
-  private districts: DistrictEntity.Create[]
+  private id: string
+  private name: string
+  private stateId: string
+  private districts: DistrictEntity[]
+  private deleteAt: Date
 
   constructor(params?: Partial<CityEntity.Params>) {
     Object.assign(this, params)
@@ -29,6 +30,20 @@ export class CityEntity {
       stateId: this.stateId
     }
   }
+
+  exists(): boolean {
+    return !!this.id
+  }
+
+  existsOrFail() {
+    if (!this.exists()) {
+      throw new Error("Not exist")
+    }
+  }
+
+  delete() {
+    this.deleteAt = new Date()
+  }
 }
 
 export namespace CityEntity {
@@ -36,14 +51,14 @@ export namespace CityEntity {
     id: string
     name: string
     stateId?: string
-    districts: DistrictEntity.Create[]
+    districts: DistrictEntity[]
   }
 
   export type Create = {
     id: string
     name: string
     stateId?: string
-    districts: DistrictEntity.Create[]
+    districts: DistrictEntity[]
   }
 
   export type Read = {

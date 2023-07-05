@@ -10,9 +10,13 @@ export class DeleteCityCommand implements IDeleteCityCommand {
   ) {}
 
   async execute(params: DeleteCityCommand.Params) {
-    await this.cityRepository.delete({
+    const city = await this.cityRepository.findOne({
       id: params.id
     })
+    city.existsOrFail()
+    city.delete()
+    city.getState().districts.forEach((district) => district.delete())
+    await this.cityRepository.save(city)
     return true
   }
 }

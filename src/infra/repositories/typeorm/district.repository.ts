@@ -3,13 +3,13 @@ import { IDistrictRepository } from "src/domain/repositories/district.repository
 import { DistrictEntity } from "src/domain/entities/district.entity"
 import { DistrictMapper } from "./mapper/district.mapper"
 import { Injectable } from "@nestjs/common"
-import { DistrictAssembler } from "./assembler/district.assembler"
+import { DistrictAssembler } from "../../../domain/assembler/district.assembler"
 
 @Injectable()
 export class DistrictRepository implements IDistrictRepository {
   constructor(private readonly connection: DataSource) {}
 
-  async create(data: IDistrictRepository.Create): Promise<boolean> {
+  async save(data: IDistrictRepository.Create): Promise<boolean> {
     const repository = this.connection.getRepository(DistrictMapper)
     await repository.save({
       id: data.getState().id,
