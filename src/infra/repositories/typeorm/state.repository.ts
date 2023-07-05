@@ -6,7 +6,7 @@ import { Injectable } from "@nestjs/common"
 import { StateAssembler } from "../../../domain/assembler/state.assembler"
 
 @Injectable()
-export class StateRepository implements IStateRepository {
+export class StateRepositoryTypeORMAdapter implements IStateRepository {
   constructor(private readonly connection: DataSource) {}
 
   async save(data: StateEntity): Promise<boolean> {

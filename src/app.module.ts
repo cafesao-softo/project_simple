@@ -11,22 +11,14 @@ import { StateModule } from "./infra/modules/state.module"
 import { CityModule } from "./infra/modules/city.module"
 import { DistrictModule } from "./infra/modules/district.module"
 import { CreateModule } from "./infra/modules/create.module"
+import { SharedModule } from "./infra/ioc/shared.module"
+import { GeoModule } from "./infra/ioc/geo.module"
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    TypeOrmModule.forRoot({
-      type: "mysql",
-      host: process.env.Node_ENV === "dev" ? "localhost" : "db",
-      port: Number(process.env.MYSQL_PORT),
-      username: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD,
-      database: process.env.MYSQL_DATABASE,
-      entities: [DistrictMapper, CityMapper, StateMapper],
-      synchronize: true,
-      logging: false,
-      autoLoadEntities: true
-    }),
+    SharedModule,
+    GeoModule,
     StateModule,
     CityModule,
     DistrictModule,
@@ -35,6 +27,4 @@ import { CreateModule } from "./infra/modules/create.module"
   controllers: [AppController],
   providers: []
 })
-export class AppModule {
-  constructor(private readonly dataSource: DataSource) {}
-}
+export class AppModule {}

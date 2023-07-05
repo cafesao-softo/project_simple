@@ -20,11 +20,15 @@ import { IReadStateQuery } from "src/application/queries/contracts/read-state.qu
 import { IUpdateStateCommand } from "src/application/commands/contracts/update-state.contracts"
 import { IDeleteStateCommand } from "src/application/commands/contracts/delete-state.contracts"
 import { IReadAllStateQuery } from "src/application/queries/contracts/read-all-state.query"
+import { GeoProviderEnum } from "../ioc/providers/geo.const"
+import { ICreateStateCommand } from "src/application/commands/contracts/create-state.contracts"
 
 @ApiTags("States")
 @Controller("states")
 export class StateController {
   constructor(
+    @Inject(GeoProviderEnum.CreateStateCommand)
+    private readonly createStateCommand: ICreateStateCommand,
     @Inject("ReadAllStateQuery")
     private readonly readAllStateQuery: IReadAllStateQuery,
     @Inject("ReadStateQuery")
