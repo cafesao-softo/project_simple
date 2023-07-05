@@ -10,7 +10,6 @@ export class DistrictRepository implements IDistrictRepository {
   constructor(private readonly connection: DataSource) {}
 
   async create(data: IDistrictRepository.Create): Promise<boolean> {
-    console.log(data)
     const repository = this.connection.getRepository(DistrictMapper)
     await repository.save({
       id: data.getState().id,
