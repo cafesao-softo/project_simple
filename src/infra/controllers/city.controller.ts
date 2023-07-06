@@ -16,9 +16,9 @@ import {
 import { IDeleteCityParamsDTO } from "src/domain/dto/delete-city.dto"
 import { CityEntity } from "src/domain/entities/city.entity"
 import { transformLowercase } from "src/infra/pipes/transformLowercase.pipe"
-import { IReadCityQuery } from "src/application/queries/contracts/read-city.query"
-import { IUpdateCityCommand } from "src/application/commands/contracts/update-city.contracts"
-import { IDeleteCityCommand } from "src/application/commands/contracts/delete-city.contracts"
+import { IReadCityQuery } from "src/application/commands/contracts/read-city.contract"
+import { IUpdateCityCommand } from "src/application/commands/contracts/update-city.contract"
+import { IDeleteCityCommand } from "src/application/commands/contracts/delete-city.contract"
 import { GeoProviderEnum } from "../ioc/constants/geo.const"
 
 @ApiTags("Cities")

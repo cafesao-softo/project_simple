@@ -4,9 +4,9 @@ import { ICreateDTO } from "src/domain/dto/create.dto"
 import { IStateRepository } from "src/domain/repositories/state.repository"
 import { ICityRepository } from "src/domain/repositories/city.repository"
 import { transformLowercaseBodyCreate } from "src/infra/pipes/transformLowercaseBodyCreate.pipe"
-import { ICreateStateCommand } from "src/application/commands/contracts/create-state.contracts"
-import { ICreateCityCommand } from "src/application/commands/contracts/create-city.contracts"
-import { ICreateDistrictCommand } from "src/application/commands/contracts/create-district.contracts"
+import { ICreateStateCommand } from "src/application/commands/contracts/create-state.contract"
+import { ICreateCityCommand } from "src/application/commands/contracts/create-city.contract"
+import { ICreateDistrictCommand } from "src/application/commands/contracts/create-district.contract"
 import { GeoProviderEnum } from "../ioc/constants/geo.const"
 
 @ApiTags("Create")

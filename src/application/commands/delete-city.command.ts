@@ -1,7 +1,7 @@
-import { Inject, Injectable } from "@nestjs/common"
+import { Injectable } from "@nestjs/common"
 import { CityEntity } from "src/domain/entities/city.entity"
 import { ICityRepository } from "src/domain/repositories/city.repository"
-import { IDeleteCityCommand } from "./contracts/delete-city.contracts"
+import { IDeleteCityCommand } from "./contracts/delete-city.contract"
 
 @Injectable()
 export class DeleteCityCommand implements IDeleteCityCommand {

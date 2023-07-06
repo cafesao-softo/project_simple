@@ -1,8 +1,8 @@
-import { Inject, Injectable } from "@nestjs/common"
+import { Injectable } from "@nestjs/common"
 import { IUUID } from "src/domain/cryptos/uuid"
 import { DistrictEntity } from "src/domain/entities/district.entity"
 import { IDistrictRepository } from "src/domain/repositories/district.repository"
-import { ICreateDistrictCommand } from "./contracts/create-district.contracts"
+import { ICreateDistrictCommand } from "./contracts/create-district.contract"
 
 @Injectable()
 export class CreateDistrictCommand implements ICreateDistrictCommand {

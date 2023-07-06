@@ -16,10 +16,10 @@ import {
 } from "src/domain/dto/update-state.dto"
 import { IDeleteStateParamsDTO } from "src/domain/dto/delete-state.dto"
 import { transformLowercase } from "src/infra/pipes/transformLowercase.pipe"
-import { IReadStateQuery } from "src/application/queries/contracts/read-state.query"
-import { IUpdateStateCommand } from "src/application/commands/contracts/update-state.contracts"
-import { IDeleteStateCommand } from "src/application/commands/contracts/delete-state.contracts"
-import { IReadAllStateQuery } from "src/application/queries/contracts/read-all-state.query"
+import { IReadStateQuery } from "src/application/commands/contracts/read-state.contract"
+import { IUpdateStateCommand } from "src/application/commands/contracts/update-state.contract"
+import { IDeleteStateCommand } from "src/application/commands/contracts/delete-state.contract"
+import { IReadAllStateQuery } from "src/application/commands/contracts/read-all-state.contract"
 import { GeoProviderEnum } from "../ioc/constants/geo.const"
 
 @ApiTags("States")

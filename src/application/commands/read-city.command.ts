@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common"
 import { CityEntity } from "src/domain/entities/city.entity"
 import { ICityRepository } from "src/domain/repositories/city.repository"
-import { IReadCityQuery } from "./contracts/read-city.query"
+import { IReadCityQuery } from "./contracts/read-city.contract"
 
 @Injectable()
 export class ReadCityQuery implements IReadCityQuery {

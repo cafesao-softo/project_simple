@@ -16,9 +16,9 @@ import {
 import { IDeleteDistrictParamsDTO } from "src/domain/dto/delete-district.dto"
 import { DistrictEntity } from "src/domain/entities/district.entity"
 import { transformLowercase } from "src/infra/pipes/transformLowercase.pipe"
-import { IReadDistrictQuery } from "src/application/queries/contracts/read-district.query"
-import { IUpdateDistrictCommand } from "src/application/commands/contracts/update-district.contracts"
-import { IDeleteDistrictCommand } from "src/application/commands/contracts/delete-district.contracts"
+import { IReadDistrictQuery } from "src/application/commands/contracts/read-district.contract"
+import { IUpdateDistrictCommand } from "src/application/commands/contracts/update-district.contract"
+import { IDeleteDistrictCommand } from "src/application/commands/contracts/delete-district.contract"
 import { GeoProviderEnum } from "../ioc/constants/geo.const"
 
 @ApiTags("Districts")

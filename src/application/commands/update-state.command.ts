@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common"
 import { DistrictEntity } from "src/domain/entities/district.entity"
 import { IStateRepository } from "src/domain/repositories/state.repository"
-import { IUpdateStateCommand } from "./contracts/update-state.contracts"
+import { IUpdateStateCommand } from "./contracts/update-state.contract"
 
 @Injectable()
 export class UpdateStateCommand implements IUpdateStateCommand {
